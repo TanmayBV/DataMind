@@ -1,0 +1,15 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Data (regenerate via scripts/generate_data.py — don't commit large CSVs)
+# Comment these out if you want your sample data visible in the repo for reviewers
+# data/*.csv
+
+# OS
+.DS_Store
