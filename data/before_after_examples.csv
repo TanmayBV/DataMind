@@ -1,0 +1,16 @@
+field,raw,cleaned,method,match_score
+city,New York,New York,exact_ci,100
+role,CIVIL ENGINEER,Civil Engineer,exact_ci,100
+department,H.R.,Human Resources,alias,100
+city,NEW YORK,New York,exact_ci,100
+role,data analyst,Data Analyst,exact_ci,100
+department,finance,Finance,exact_ci,100
+city,new york,New York,exact_ci,100
+role,HR ANALYST,HR Analyst,exact_ci,100
+department,FIN,Finance,alias,100
+city,ISTANBUL,Istanbul,exact_ci,100
+role,CIVIL ENGINEER,Civil Engineer,exact_ci,100
+department,human resources,Human Resources,exact_ci,100
+city,"Dubai, UAE",Dubai,alias,100
+role,HR Analyst,HR Analyst,exact_ci,100
+department,ENG,Engineering,alias,100

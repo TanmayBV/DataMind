@@ -1,0 +1,3045 @@
+assignment_id,employee_id,project_name_raw
+1,1,GPP project
+2,3,SKYLINE TOWER
+3,3,Metro Expansion
+4,4,SKYLINE TOWER
+5,5,skyline tower
+6,7,SKYLINE TOWER
+7,9,Metro Expansion
+8,12,SKYLINE TOWER
+9,13,GPP
+10,14,Cloud-Migration
+11,15,gpp
+12,18,gpp
+13,18,Metro Expansion
+14,19,GPP
+15,19,SKYLINE TOWER
+16,23,gpp
+17,23,Skyline Tower
+18,24,Metro Expansion
+19,25,Cloud-Migration
+20,26,skyline tower
+21,26,GPP project
+22,27,Skyline-Tower
+23,28,Metro Expansion
+24,28,Skyline-Tower
+25,29,skyline tower
+26,29,gpp
+27,32,GPP
+28,32,SKYLINE TOWER
+29,33,Skyline-Tower
+30,35,Gpp
+31,36,Gpp
+32,37,SKYLINE TOWER
+33,38,gpp
+34,38,Cloud-Migration
+35,40,Skyline-Tower
+36,40,Cloud-Migration
+37,41,Skyline-Tower
+38,42,Skyline-Tower
+39,43,Skyline Tower
+40,44,metro expansion
+41,44,Cloud-Migration
+42,45,metro expansion
+43,45,Skyline Tower
+44,46,Gpp Project
+45,47,metro expansion
+46,47,GPP project
+47,48,Skyline Tower
+48,48,METRO EXPANSION
+49,49,cloud migration
+50,52,Gpp
+51,52,Cloud Migration
+52,53,skyline tower
+53,56,Skyline-Tower
+54,56,GPP
+55,58,Gpp Project
+56,59,Skyline Tower
+57,59,cloud migration
+58,62,Skyline-Tower
+59,63,Cloud-Migration
+60,64,Cloud Migration
+61,65,Skyline-Tower
+62,67,SKYLINE TOWER
+63,67,cloud migration
+64,68,Cloud Migration
+65,68,Skyline-Tower
+66,69,Gpp
+67,69,Skyline-Tower
+68,71,Gpp Project
+69,71,Metro Expansion
+70,75,Cloud Migration
+71,75,Gpp Project
+72,76,Skyline-Tower
+73,76,cloud migration
+74,78,Cloud Migration
+75,78,Skyline-Tower
+76,82,cloud migration
+77,82,GPP project
+78,83,Skyline Tower
+79,83,metro expansion
+80,84,Cloud Migration
+81,84,GPP project
+82,85,Gpp
+83,86,gpp
+84,87,skyline tower
+85,87,Cloud-Migration
+86,88,metro expansion
+87,88,Skyline Tower
+88,89,GPP project
+89,90,SKYLINE TOWER
+90,90,GPP
+91,91,cloud migration
+92,91,Metro Expansion
+93,95,Gpp
+94,95,metro expansion
+95,96,Gpp Project
+96,96,metro expansion
+97,97,METRO EXPANSION
+98,97,Skyline-Tower
+99,98,Gpp Project
+100,98,skyline tower
+101,100,cloud migration
+102,101,cloud migration
+103,101,METRO EXPANSION
+104,102,Skyline Tower
+105,102,Cloud Migration
+106,106,GPP project
+107,106,Skyline-Tower
+108,107,gpp
+109,108,Cloud-Migration
+110,108,metro expansion
+111,110,GPP project
+112,110,METRO EXPANSION
+113,111,Gpp
+114,111,metro expansion
+115,112,SKYLINE TOWER
+116,112,METRO EXPANSION
+117,114,Gpp
+118,115,Cloud Migration
+119,116,gpp
+120,117,Cloud-Migration
+121,118,GPP project
+122,118,Cloud Migration
+123,119,Gpp
+124,119,Skyline Tower
+125,120,metro expansion
+126,122,Cloud-Migration
+127,123,metro expansion
+128,123,Cloud Migration
+129,126,Skyline-Tower
+130,128,Gpp Project
+131,128,Skyline-Tower
+132,129,Cloud Migration
+133,131,metro expansion
+134,131,Gpp Project
+135,132,cloud migration
+136,135,cloud migration
+137,136,cloud migration
+138,139,Cloud-Migration
+139,139,metro expansion
+140,140,METRO EXPANSION
+141,142,METRO EXPANSION
+142,143,SKYLINE TOWER
+143,144,cloud migration
+144,145,skyline tower
+145,146,Gpp
+146,146,skyline tower
+147,147,Cloud-Migration
+148,147,SKYLINE TOWER
+149,149,GPP
+150,150,Metro Expansion
+151,152,skyline tower
+152,152,Cloud-Migration
+153,153,skyline tower
+154,154,Skyline-Tower
+155,154,Gpp
+156,156,metro expansion
+157,157,Cloud-Migration
+158,157,GPP project
+159,158,GPP
+160,160,cloud migration
+161,161,METRO EXPANSION
+162,162,gpp
+163,162,Metro Expansion
+164,163,gpp
+165,164,skyline tower
+166,164,cloud migration
+167,166,METRO EXPANSION
+168,166,GPP project
+169,169,GPP project
+170,169,cloud migration
+171,170,Cloud-Migration
+172,172,cloud migration
+173,172,Gpp Project
+174,174,GPP
+175,174,Cloud-Migration
+176,176,cloud migration
+177,177,metro expansion
+178,177,SKYLINE TOWER
+179,178,Skyline Tower
+180,178,GPP
+181,179,metro expansion
+182,181,cloud migration
+183,181,METRO EXPANSION
+184,182,SKYLINE TOWER
+185,182,Gpp
+186,183,Skyline-Tower
+187,183,Cloud-Migration
+188,186,skyline tower
+189,188,cloud migration
+190,189,GPP
+191,190,Cloud-Migration
+192,190,Gpp Project
+193,191,Cloud Migration
+194,191,GPP project
+195,194,METRO EXPANSION
+196,194,Gpp
+197,195,GPP
+198,196,Metro Expansion
+199,198,cloud migration
+200,200,METRO EXPANSION
+201,201,Metro Expansion
+202,202,Metro Expansion
+203,203,SKYLINE TOWER
+204,204,Cloud-Migration
+205,205,GPP
+206,206,Gpp
+207,207,METRO EXPANSION
+208,207,cloud migration
+209,209,cloud migration
+210,209,Skyline-Tower
+211,210,Skyline Tower
+212,211,gpp
+213,212,skyline tower
+214,216,METRO EXPANSION
+215,219,skyline tower
+216,219,METRO EXPANSION
+217,220,Cloud-Migration
+218,221,METRO EXPANSION
+219,222,skyline tower
+220,223,SKYLINE TOWER
+221,223,metro expansion
+222,224,cloud migration
+223,224,metro expansion
+224,225,Metro Expansion
+225,225,cloud migration
+226,226,Cloud Migration
+227,227,Cloud-Migration
+228,228,Cloud Migration
+229,229,SKYLINE TOWER
+230,229,Metro Expansion
+231,230,GPP project
+232,230,Skyline Tower
+233,233,cloud migration
+234,233,metro expansion
+235,235,skyline tower
+236,235,Metro Expansion
+237,236,Metro Expansion
+238,239,SKYLINE TOWER
+239,239,Cloud-Migration
+240,240,Cloud Migration
+241,242,GPP
+242,243,metro expansion
+243,244,Gpp Project
+244,244,SKYLINE TOWER
+245,246,metro expansion
+246,247,Gpp
+247,249,SKYLINE TOWER
+248,250,GPP project
+249,251,GPP
+250,251,metro expansion
+251,252,skyline tower
+252,252,Gpp Project
+253,253,Metro Expansion
+254,254,Cloud-Migration
+255,255,METRO EXPANSION
+256,255,Skyline Tower
+257,256,Cloud-Migration
+258,256,GPP
+259,258,Skyline Tower
+260,258,GPP
+261,260,METRO EXPANSION
+262,263,gpp
+263,263,SKYLINE TOWER
+264,264,Skyline-Tower
+265,265,cloud migration
+266,265,GPP
+267,266,GPP project
+268,268,METRO EXPANSION
+269,268,Cloud Migration
+270,269,cloud migration
+271,269,Gpp
+272,271,Cloud Migration
+273,272,skyline tower
+274,273,metro expansion
+275,276,gpp
+276,277,cloud migration
+277,277,Gpp Project
+278,278,Skyline-Tower
+279,278,cloud migration
+280,279,METRO EXPANSION
+281,279,Gpp
+282,280,cloud migration
+283,280,Gpp Project
+284,282,metro expansion
+285,282,SKYLINE TOWER
+286,284,SKYLINE TOWER
+287,284,metro expansion
+288,285,skyline tower
+289,285,metro expansion
+290,287,GPP project
+291,287,cloud migration
+292,289,Metro Expansion
+293,290,metro expansion
+294,291,cloud migration
+295,291,gpp
+296,292,skyline tower
+297,292,GPP
+298,293,Cloud Migration
+299,293,Metro Expansion
+300,294,SKYLINE TOWER
+301,294,metro expansion
+302,295,Cloud Migration
+303,296,Cloud Migration
+304,296,metro expansion
+305,297,METRO EXPANSION
+306,305,cloud migration
+307,306,METRO EXPANSION
+308,306,cloud migration
+309,309,Gpp
+310,310,Skyline Tower
+311,311,Cloud Migration
+312,311,Gpp Project
+313,312,Gpp
+314,312,Skyline-Tower
+315,313,skyline tower
+316,314,Cloud-Migration
+317,314,METRO EXPANSION
+318,316,Cloud-Migration
+319,316,Skyline-Tower
+320,319,cloud migration
+321,323,METRO EXPANSION
+322,323,gpp
+323,325,Cloud-Migration
+324,325,GPP
+325,326,metro expansion
+326,327,Skyline Tower
+327,327,metro expansion
+328,328,METRO EXPANSION
+329,328,SKYLINE TOWER
+330,330,cloud migration
+331,330,metro expansion
+332,331,Cloud-Migration
+333,331,gpp
+334,332,SKYLINE TOWER
+335,332,Metro Expansion
+336,333,Skyline-Tower
+337,333,Cloud-Migration
+338,335,Cloud Migration
+339,336,cloud migration
+340,336,Metro Expansion
+341,337,cloud migration
+342,337,GPP
+343,338,Skyline Tower
+344,338,Cloud-Migration
+345,343,Cloud Migration
+346,343,Skyline Tower
+347,344,METRO EXPANSION
+348,346,METRO EXPANSION
+349,347,cloud migration
+350,349,Cloud-Migration
+351,349,Skyline-Tower
+352,350,Cloud Migration
+353,350,gpp
+354,352,metro expansion
+355,352,GPP
+356,356,metro expansion
+357,357,Cloud-Migration
+358,358,cloud migration
+359,359,cloud migration
+360,360,Cloud-Migration
+361,360,Gpp
+362,361,cloud migration
+363,361,Skyline Tower
+364,363,GPP project
+365,364,Metro Expansion
+366,364,Cloud-Migration
+367,369,METRO EXPANSION
+368,369,skyline tower
+369,371,Cloud-Migration
+370,373,GPP project
+371,374,Skyline-Tower
+372,377,SKYLINE TOWER
+373,379,Gpp Project
+374,379,Skyline Tower
+375,380,Cloud-Migration
+376,380,Gpp
+377,382,cloud migration
+378,382,GPP
+379,383,GPP
+380,384,Cloud Migration
+381,385,Gpp
+382,386,Cloud Migration
+383,387,gpp
+384,390,cloud migration
+385,391,Cloud Migration
+386,391,Metro Expansion
+387,392,metro expansion
+388,392,Skyline Tower
+389,393,Cloud Migration
+390,393,METRO EXPANSION
+391,394,METRO EXPANSION
+392,395,Gpp
+393,397,Skyline-Tower
+394,397,Gpp Project
+395,398,metro expansion
+396,398,cloud migration
+397,399,skyline tower
+398,399,cloud migration
+399,400,Cloud-Migration
+400,401,Cloud-Migration
+401,401,metro expansion
+402,403,METRO EXPANSION
+403,405,Skyline Tower
+404,405,Gpp Project
+405,406,cloud migration
+406,406,gpp
+407,407,METRO EXPANSION
+408,408,GPP
+409,411,Cloud Migration
+410,412,gpp
+411,412,cloud migration
+412,413,gpp
+413,415,skyline tower
+414,415,metro expansion
+415,416,METRO EXPANSION
+416,417,Gpp
+417,417,metro expansion
+418,419,Metro Expansion
+419,420,METRO EXPANSION
+420,420,Cloud Migration
+421,421,Skyline Tower
+422,421,metro expansion
+423,422,Cloud Migration
+424,422,metro expansion
+425,423,GPP
+426,423,Cloud-Migration
+427,424,GPP
+428,424,Skyline Tower
+429,425,Skyline Tower
+430,425,Cloud Migration
+431,426,Cloud-Migration
+432,428,Cloud-Migration
+433,429,METRO EXPANSION
+434,430,gpp
+435,431,GPP
+436,431,skyline tower
+437,432,metro expansion
+438,432,Gpp Project
+439,433,GPP
+440,433,METRO EXPANSION
+441,434,Skyline Tower
+442,434,Cloud Migration
+443,435,Cloud Migration
+444,435,METRO EXPANSION
+445,436,gpp
+446,437,GPP project
+447,438,cloud migration
+448,438,Metro Expansion
+449,440,Cloud-Migration
+450,442,Metro Expansion
+451,442,GPP project
+452,443,Gpp Project
+453,445,METRO EXPANSION
+454,447,gpp
+455,448,Cloud-Migration
+456,448,SKYLINE TOWER
+457,449,cloud migration
+458,449,GPP
+459,455,Gpp Project
+460,456,GPP project
+461,457,Cloud Migration
+462,459,metro expansion
+463,459,Cloud-Migration
+464,460,cloud migration
+465,461,gpp
+466,461,METRO EXPANSION
+467,462,skyline tower
+468,463,Gpp Project
+469,464,GPP
+470,464,Cloud Migration
+471,465,skyline tower
+472,466,skyline tower
+473,467,Cloud-Migration
+474,468,Gpp Project
+475,469,METRO EXPANSION
+476,471,skyline tower
+477,472,metro expansion
+478,472,cloud migration
+479,474,METRO EXPANSION
+480,474,skyline tower
+481,477,GPP
+482,477,cloud migration
+483,478,metro expansion
+484,478,SKYLINE TOWER
+485,480,Metro Expansion
+486,480,Gpp Project
+487,481,Metro Expansion
+488,481,skyline tower
+489,483,Metro Expansion
+490,484,Skyline-Tower
+491,484,Metro Expansion
+492,486,Metro Expansion
+493,487,skyline tower
+494,489,SKYLINE TOWER
+495,490,skyline tower
+496,490,Gpp Project
+497,491,Cloud-Migration
+498,492,metro expansion
+499,494,Gpp
+500,494,skyline tower
+501,495,GPP
+502,496,METRO EXPANSION
+503,497,METRO EXPANSION
+504,498,Gpp Project
+505,498,skyline tower
+506,499,metro expansion
+507,499,Gpp Project
+508,501,cloud migration
+509,501,gpp
+510,502,Cloud Migration
+511,502,METRO EXPANSION
+512,504,cloud migration
+513,504,Gpp
+514,505,metro expansion
+515,505,Cloud-Migration
+516,507,Gpp Project
+517,509,METRO EXPANSION
+518,511,skyline tower
+519,511,Cloud Migration
+520,512,GPP project
+521,512,SKYLINE TOWER
+522,516,skyline tower
+523,517,Cloud Migration
+524,517,Metro Expansion
+525,518,gpp
+526,519,cloud migration
+527,520,Cloud Migration
+528,521,Cloud Migration
+529,521,GPP project
+530,522,Cloud-Migration
+531,522,GPP
+532,523,METRO EXPANSION
+533,523,Gpp
+534,524,Gpp
+535,524,Cloud-Migration
+536,526,cloud migration
+537,526,SKYLINE TOWER
+538,528,cloud migration
+539,528,SKYLINE TOWER
+540,529,Gpp
+541,530,Metro Expansion
+542,530,skyline tower
+543,533,Skyline-Tower
+544,533,cloud migration
+545,534,METRO EXPANSION
+546,534,Gpp Project
+547,535,Cloud Migration
+548,535,Gpp Project
+549,537,Gpp Project
+550,538,Cloud-Migration
+551,538,GPP project
+552,539,SKYLINE TOWER
+553,539,metro expansion
+554,542,skyline tower
+555,543,Skyline-Tower
+556,543,Gpp
+557,544,cloud migration
+558,544,Gpp
+559,545,METRO EXPANSION
+560,546,GPP
+561,548,Skyline Tower
+562,549,Cloud-Migration
+563,550,Cloud Migration
+564,551,Gpp Project
+565,552,Metro Expansion
+566,555,Skyline Tower
+567,556,Cloud-Migration
+568,556,GPP
+569,559,gpp
+570,560,Skyline-Tower
+571,560,GPP
+572,562,Gpp Project
+573,563,METRO EXPANSION
+574,563,Cloud-Migration
+575,564,metro expansion
+576,566,Skyline Tower
+577,569,cloud migration
+578,570,skyline tower
+579,572,Gpp Project
+580,572,Metro Expansion
+581,573,SKYLINE TOWER
+582,574,Skyline-Tower
+583,574,Gpp Project
+584,575,metro expansion
+585,576,Metro Expansion
+586,576,Gpp Project
+587,578,Gpp Project
+588,578,Cloud-Migration
+589,579,metro expansion
+590,581,Gpp
+591,581,Metro Expansion
+592,584,METRO EXPANSION
+593,585,cloud migration
+594,585,Skyline Tower
+595,589,skyline tower
+596,589,GPP
+597,590,GPP project
+598,592,skyline tower
+599,594,METRO EXPANSION
+600,595,Gpp Project
+601,595,cloud migration
+602,596,Skyline-Tower
+603,596,Gpp
+604,598,GPP project
+605,599,Skyline-Tower
+606,601,Gpp Project
+607,602,Gpp Project
+608,602,cloud migration
+609,608,SKYLINE TOWER
+610,611,skyline tower
+611,613,Gpp
+612,613,Cloud-Migration
+613,614,Gpp
+614,616,gpp
+615,616,Metro Expansion
+616,618,Cloud-Migration
+617,619,Gpp
+618,620,GPP project
+619,621,Skyline-Tower
+620,624,Metro Expansion
+621,624,Skyline Tower
+622,625,SKYLINE TOWER
+623,629,GPP
+624,630,Skyline-Tower
+625,632,GPP
+626,633,metro expansion
+627,635,Skyline Tower
+628,636,gpp
+629,640,Skyline-Tower
+630,640,GPP project
+631,643,Skyline Tower
+632,643,cloud migration
+633,644,Gpp
+634,645,cloud migration
+635,646,skyline tower
+636,647,GPP project
+637,647,Cloud Migration
+638,648,metro expansion
+639,648,skyline tower
+640,650,gpp
+641,650,METRO EXPANSION
+642,652,Gpp Project
+643,652,cloud migration
+644,654,Skyline-Tower
+645,655,Metro Expansion
+646,657,METRO EXPANSION
+647,657,skyline tower
+648,658,GPP project
+649,658,SKYLINE TOWER
+650,662,metro expansion
+651,662,cloud migration
+652,663,METRO EXPANSION
+653,663,SKYLINE TOWER
+654,664,Skyline Tower
+655,664,Gpp Project
+656,666,Gpp
+657,666,Cloud Migration
+658,669,Metro Expansion
+659,670,GPP
+660,670,Skyline Tower
+661,671,Metro Expansion
+662,672,Metro Expansion
+663,673,Skyline-Tower
+664,673,cloud migration
+665,674,metro expansion
+666,674,GPP project
+667,676,skyline tower
+668,677,METRO EXPANSION
+669,677,Gpp Project
+670,678,cloud migration
+671,678,Skyline-Tower
+672,683,Cloud Migration
+673,686,Metro Expansion
+674,687,cloud migration
+675,688,gpp
+676,689,Skyline-Tower
+677,691,cloud migration
+678,691,skyline tower
+679,693,METRO EXPANSION
+680,694,Metro Expansion
+681,695,Gpp
+682,695,Cloud-Migration
+683,696,Gpp Project
+684,696,SKYLINE TOWER
+685,697,Cloud Migration
+686,698,cloud migration
+687,700,SKYLINE TOWER
+688,702,GPP
+689,703,Gpp Project
+690,703,Metro Expansion
+691,704,Metro Expansion
+692,705,GPP project
+693,705,SKYLINE TOWER
+694,706,Gpp
+695,708,GPP project
+696,709,GPP project
+697,711,Gpp
+698,713,SKYLINE TOWER
+699,714,Skyline Tower
+700,716,GPP project
+701,717,skyline tower
+702,718,gpp
+703,718,metro expansion
+704,720,metro expansion
+705,721,GPP project
+706,721,Cloud Migration
+707,722,gpp
+708,723,Metro Expansion
+709,723,Cloud-Migration
+710,725,skyline tower
+711,727,Cloud-Migration
+712,727,Metro Expansion
+713,729,Skyline-Tower
+714,729,METRO EXPANSION
+715,730,Metro Expansion
+716,730,skyline tower
+717,732,metro expansion
+718,733,cloud migration
+719,734,metro expansion
+720,735,Metro Expansion
+721,735,SKYLINE TOWER
+722,737,Metro Expansion
+723,737,Skyline Tower
+724,738,METRO EXPANSION
+725,738,Gpp Project
+726,739,Skyline-Tower
+727,739,Cloud Migration
+728,740,Skyline-Tower
+729,740,Metro Expansion
+730,743,metro expansion
+731,743,Cloud Migration
+732,744,skyline tower
+733,745,Metro Expansion
+734,749,Cloud-Migration
+735,749,Skyline Tower
+736,750,Gpp Project
+737,750,Metro Expansion
+738,751,skyline tower
+739,752,Gpp
+740,752,Skyline Tower
+741,753,Cloud Migration
+742,755,skyline tower
+743,755,Gpp Project
+744,756,Metro Expansion
+745,756,GPP project
+746,757,cloud migration
+747,757,skyline tower
+748,758,GPP
+749,758,METRO EXPANSION
+750,760,GPP project
+751,762,Cloud-Migration
+752,762,gpp
+753,763,metro expansion
+754,764,Metro Expansion
+755,765,gpp
+756,767,cloud migration
+757,767,skyline tower
+758,768,Metro Expansion
+759,768,gpp
+760,769,metro expansion
+761,769,Skyline-Tower
+762,770,metro expansion
+763,770,Cloud-Migration
+764,772,Cloud-Migration
+765,772,GPP project
+766,775,Cloud Migration
+767,775,gpp
+768,777,Gpp
+769,778,GPP
+770,778,metro expansion
+771,779,cloud migration
+772,780,GPP
+773,780,skyline tower
+774,781,Skyline Tower
+775,782,Cloud-Migration
+776,783,Skyline-Tower
+777,783,GPP project
+778,784,GPP project
+779,784,Metro Expansion
+780,785,Gpp Project
+781,787,Gpp
+782,788,Metro Expansion
+783,788,GPP project
+784,789,SKYLINE TOWER
+785,789,Cloud-Migration
+786,790,skyline tower
+787,790,Cloud-Migration
+788,795,metro expansion
+789,795,GPP
+790,797,Cloud-Migration
+791,799,Skyline-Tower
+792,803,metro expansion
+793,803,skyline tower
+794,805,SKYLINE TOWER
+795,806,Cloud Migration
+796,807,Metro Expansion
+797,807,SKYLINE TOWER
+798,808,metro expansion
+799,809,Cloud Migration
+800,811,Gpp Project
+801,811,SKYLINE TOWER
+802,812,Skyline-Tower
+803,812,Cloud Migration
+804,813,GPP
+805,814,METRO EXPANSION
+806,814,Gpp
+807,817,metro expansion
+808,818,gpp
+809,818,Skyline-Tower
+810,820,gpp
+811,820,Metro Expansion
+812,821,Gpp
+813,821,metro expansion
+814,822,Cloud-Migration
+815,824,Skyline Tower
+816,824,cloud migration
+817,826,Cloud Migration
+818,827,cloud migration
+819,827,Gpp
+820,829,Skyline Tower
+821,830,GPP project
+822,830,Cloud Migration
+823,832,Skyline Tower
+824,832,metro expansion
+825,833,Gpp
+826,835,Skyline Tower
+827,835,Cloud-Migration
+828,837,metro expansion
+829,838,METRO EXPANSION
+830,840,Cloud-Migration
+831,840,GPP project
+832,841,Gpp
+833,841,Cloud-Migration
+834,842,skyline tower
+835,843,Cloud-Migration
+836,843,Metro Expansion
+837,844,gpp
+838,844,skyline tower
+839,845,skyline tower
+840,845,Cloud Migration
+841,849,Cloud Migration
+842,850,Gpp
+843,852,METRO EXPANSION
+844,852,GPP project
+845,853,Cloud Migration
+846,853,skyline tower
+847,854,Cloud-Migration
+848,854,Skyline Tower
+849,855,Skyline-Tower
+850,856,METRO EXPANSION
+851,856,Cloud Migration
+852,858,Gpp
+853,859,GPP project
+854,859,Skyline Tower
+855,861,skyline tower
+856,861,Cloud-Migration
+857,862,METRO EXPANSION
+858,862,Cloud Migration
+859,864,Skyline-Tower
+860,864,Gpp Project
+861,866,Cloud-Migration
+862,867,SKYLINE TOWER
+863,869,skyline tower
+864,872,SKYLINE TOWER
+865,873,Cloud-Migration
+866,873,GPP
+867,874,Cloud-Migration
+868,878,Cloud-Migration
+869,878,Skyline Tower
+870,880,metro expansion
+871,880,Skyline Tower
+872,882,Gpp
+873,883,gpp
+874,883,Skyline-Tower
+875,887,skyline tower
+876,887,cloud migration
+877,888,Cloud-Migration
+878,888,SKYLINE TOWER
+879,889,skyline tower
+880,890,Cloud-Migration
+881,892,skyline tower
+882,893,cloud migration
+883,895,Cloud-Migration
+884,895,gpp
+885,896,Gpp
+886,896,metro expansion
+887,897,gpp
+888,897,Skyline-Tower
+889,898,GPP project
+890,899,Metro Expansion
+891,899,cloud migration
+892,900,skyline tower
+893,901,metro expansion
+894,903,Metro Expansion
+895,903,SKYLINE TOWER
+896,904,cloud migration
+897,905,cloud migration
+898,905,METRO EXPANSION
+899,907,METRO EXPANSION
+900,907,skyline tower
+901,908,Gpp Project
+902,909,SKYLINE TOWER
+903,909,cloud migration
+904,910,Skyline-Tower
+905,910,GPP
+906,911,SKYLINE TOWER
+907,912,Metro Expansion
+908,914,cloud migration
+909,915,GPP
+910,915,cloud migration
+911,916,SKYLINE TOWER
+912,916,METRO EXPANSION
+913,917,GPP
+914,917,Skyline Tower
+915,919,Cloud Migration
+916,921,Metro Expansion
+917,921,Gpp Project
+918,922,Gpp
+919,922,Skyline-Tower
+920,923,Gpp
+921,924,Gpp Project
+922,925,cloud migration
+923,925,Skyline Tower
+924,927,Cloud-Migration
+925,927,Gpp Project
+926,928,GPP project
+927,929,skyline tower
+928,929,METRO EXPANSION
+929,933,Metro Expansion
+930,933,GPP project
+931,934,Metro Expansion
+932,935,GPP
+933,936,metro expansion
+934,937,metro expansion
+935,938,METRO EXPANSION
+936,939,skyline tower
+937,940,GPP project
+938,940,Cloud-Migration
+939,941,GPP project
+940,941,Skyline Tower
+941,942,metro expansion
+942,944,Metro Expansion
+943,944,Gpp Project
+944,945,GPP
+945,946,Cloud Migration
+946,946,Skyline-Tower
+947,947,gpp
+948,947,Metro Expansion
+949,949,cloud migration
+950,951,SKYLINE TOWER
+951,951,Cloud-Migration
+952,952,Cloud-Migration
+953,953,Gpp Project
+954,955,skyline tower
+955,956,cloud migration
+956,956,metro expansion
+957,957,metro expansion
+958,958,Cloud Migration
+959,959,SKYLINE TOWER
+960,961,gpp
+961,964,SKYLINE TOWER
+962,964,METRO EXPANSION
+963,965,cloud migration
+964,965,metro expansion
+965,966,GPP
+966,966,METRO EXPANSION
+967,967,METRO EXPANSION
+968,968,GPP
+969,968,SKYLINE TOWER
+970,969,GPP project
+971,969,Cloud Migration
+972,970,cloud migration
+973,971,Gpp
+974,972,Cloud-Migration
+975,972,Gpp
+976,973,Gpp
+977,975,SKYLINE TOWER
+978,975,gpp
+979,978,skyline tower
+980,978,gpp
+981,979,metro expansion
+982,979,Skyline Tower
+983,981,SKYLINE TOWER
+984,982,Cloud-Migration
+985,983,skyline tower
+986,985,Skyline-Tower
+987,986,Cloud-Migration
+988,988,gpp
+989,991,Gpp
+990,992,cloud migration
+991,993,cloud migration
+992,994,METRO EXPANSION
+993,994,Cloud-Migration
+994,995,skyline tower
+995,995,METRO EXPANSION
+996,997,cloud migration
+997,999,Gpp Project
+998,1000,cloud migration
+999,1001,Cloud-Migration
+1000,1005,metro expansion
+1001,1005,Skyline Tower
+1002,1007,Metro Expansion
+1003,1007,skyline tower
+1004,1008,cloud migration
+1005,1009,Metro Expansion
+1006,1009,GPP project
+1007,1010,cloud migration
+1008,1011,Cloud-Migration
+1009,1011,METRO EXPANSION
+1010,1012,Gpp Project
+1011,1013,Cloud Migration
+1012,1014,GPP
+1013,1014,skyline tower
+1014,1015,Gpp Project
+1015,1016,gpp
+1016,1017,metro expansion
+1017,1018,Skyline-Tower
+1018,1020,SKYLINE TOWER
+1019,1021,metro expansion
+1020,1022,Skyline-Tower
+1021,1022,Cloud Migration
+1022,1024,metro expansion
+1023,1024,skyline tower
+1024,1025,Cloud Migration
+1025,1025,Skyline-Tower
+1026,1026,Gpp Project
+1027,1028,GPP project
+1028,1028,Skyline Tower
+1029,1030,Skyline Tower
+1030,1032,Cloud-Migration
+1031,1033,GPP
+1032,1033,METRO EXPANSION
+1033,1034,metro expansion
+1034,1034,cloud migration
+1035,1035,GPP project
+1036,1036,GPP
+1037,1038,skyline tower
+1038,1038,metro expansion
+1039,1039,Cloud-Migration
+1040,1040,METRO EXPANSION
+1041,1041,Skyline Tower
+1042,1042,Cloud Migration
+1043,1043,cloud migration
+1044,1043,GPP project
+1045,1044,Cloud-Migration
+1046,1044,metro expansion
+1047,1046,skyline tower
+1048,1047,Cloud-Migration
+1049,1047,GPP
+1050,1052,cloud migration
+1051,1052,Gpp Project
+1052,1053,Cloud Migration
+1053,1053,SKYLINE TOWER
+1054,1054,cloud migration
+1055,1055,cloud migration
+1056,1057,Skyline-Tower
+1057,1058,Metro Expansion
+1058,1059,metro expansion
+1059,1063,Cloud Migration
+1060,1063,Skyline Tower
+1061,1064,Gpp
+1062,1064,Cloud-Migration
+1063,1065,skyline tower
+1064,1065,Cloud-Migration
+1065,1068,SKYLINE TOWER
+1066,1068,Gpp
+1067,1069,Metro Expansion
+1068,1070,metro expansion
+1069,1071,cloud migration
+1070,1071,METRO EXPANSION
+1071,1075,skyline tower
+1072,1075,GPP
+1073,1076,SKYLINE TOWER
+1074,1078,gpp
+1075,1079,Cloud-Migration
+1076,1079,SKYLINE TOWER
+1077,1080,Skyline-Tower
+1078,1080,Cloud-Migration
+1079,1081,Gpp
+1080,1082,Cloud-Migration
+1081,1083,skyline tower
+1082,1083,Gpp
+1083,1084,Cloud-Migration
+1084,1085,Skyline Tower
+1085,1087,metro expansion
+1086,1087,Skyline-Tower
+1087,1088,Cloud Migration
+1088,1089,SKYLINE TOWER
+1089,1091,Cloud Migration
+1090,1091,Skyline Tower
+1091,1094,METRO EXPANSION
+1092,1094,GPP project
+1093,1096,Skyline-Tower
+1094,1096,metro expansion
+1095,1099,cloud migration
+1096,1100,metro expansion
+1097,1100,Skyline Tower
+1098,1102,Gpp Project
+1099,1102,cloud migration
+1100,1103,Cloud-Migration
+1101,1103,skyline tower
+1102,1104,metro expansion
+1103,1105,Gpp Project
+1104,1105,Cloud-Migration
+1105,1106,Skyline Tower
+1106,1106,metro expansion
+1107,1107,skyline tower
+1108,1107,cloud migration
+1109,1108,metro expansion
+1110,1108,GPP project
+1111,1110,Cloud-Migration
+1112,1110,Metro Expansion
+1113,1111,Gpp
+1114,1112,metro expansion
+1115,1112,cloud migration
+1116,1115,metro expansion
+1117,1115,gpp
+1118,1116,gpp
+1119,1116,Metro Expansion
+1120,1117,SKYLINE TOWER
+1121,1119,metro expansion
+1122,1120,Metro Expansion
+1123,1123,GPP project
+1124,1126,metro expansion
+1125,1126,Cloud Migration
+1126,1127,cloud migration
+1127,1127,Gpp
+1128,1131,metro expansion
+1129,1132,SKYLINE TOWER
+1130,1133,Skyline Tower
+1131,1134,METRO EXPANSION
+1132,1134,Skyline Tower
+1133,1136,skyline tower
+1134,1136,Metro Expansion
+1135,1137,metro expansion
+1136,1137,Gpp Project
+1137,1138,Skyline Tower
+1138,1139,Skyline Tower
+1139,1142,skyline tower
+1140,1143,skyline tower
+1141,1143,Cloud Migration
+1142,1144,METRO EXPANSION
+1143,1145,METRO EXPANSION
+1144,1146,SKYLINE TOWER
+1145,1147,cloud migration
+1146,1147,SKYLINE TOWER
+1147,1148,Cloud-Migration
+1148,1148,Metro Expansion
+1149,1150,SKYLINE TOWER
+1150,1150,Metro Expansion
+1151,1153,METRO EXPANSION
+1152,1153,Gpp Project
+1153,1154,METRO EXPANSION
+1154,1154,Skyline-Tower
+1155,1155,Skyline Tower
+1156,1155,METRO EXPANSION
+1157,1156,Metro Expansion
+1158,1156,skyline tower
+1159,1157,Cloud Migration
+1160,1157,Metro Expansion
+1161,1158,Gpp Project
+1162,1158,METRO EXPANSION
+1163,1159,METRO EXPANSION
+1164,1160,METRO EXPANSION
+1165,1160,Skyline Tower
+1166,1161,metro expansion
+1167,1162,SKYLINE TOWER
+1168,1163,cloud migration
+1169,1163,Metro Expansion
+1170,1166,Gpp Project
+1171,1167,Cloud-Migration
+1172,1167,Skyline-Tower
+1173,1168,Gpp Project
+1174,1169,Gpp
+1175,1169,Metro Expansion
+1176,1170,METRO EXPANSION
+1177,1173,Cloud-Migration
+1178,1175,Metro Expansion
+1179,1176,GPP project
+1180,1176,metro expansion
+1181,1177,metro expansion
+1182,1177,skyline tower
+1183,1178,skyline tower
+1184,1178,gpp
+1185,1179,Metro Expansion
+1186,1179,Skyline-Tower
+1187,1181,GPP project
+1188,1181,Metro Expansion
+1189,1182,GPP
+1190,1182,Cloud Migration
+1191,1185,Cloud Migration
+1192,1186,GPP project
+1193,1186,METRO EXPANSION
+1194,1187,metro expansion
+1195,1187,GPP
+1196,1188,Cloud-Migration
+1197,1188,Skyline-Tower
+1198,1189,Cloud Migration
+1199,1191,SKYLINE TOWER
+1200,1193,metro expansion
+1201,1194,Skyline Tower
+1202,1195,skyline tower
+1203,1195,GPP
+1204,1196,GPP project
+1205,1196,Cloud Migration
+1206,1197,Skyline Tower
+1207,1197,gpp
+1208,1199,GPP project
+1209,1199,cloud migration
+1210,1201,Cloud-Migration
+1211,1201,SKYLINE TOWER
+1212,1204,cloud migration
+1213,1204,Gpp
+1214,1205,Skyline-Tower
+1215,1205,GPP project
+1216,1209,Cloud-Migration
+1217,1210,metro expansion
+1218,1213,GPP project
+1219,1215,Cloud-Migration
+1220,1217,Cloud-Migration
+1221,1218,SKYLINE TOWER
+1222,1218,GPP
+1223,1219,GPP
+1224,1219,cloud migration
+1225,1221,gpp
+1226,1221,metro expansion
+1227,1222,GPP
+1228,1222,METRO EXPANSION
+1229,1224,gpp
+1230,1225,metro expansion
+1231,1226,cloud migration
+1232,1226,METRO EXPANSION
+1233,1227,metro expansion
+1234,1227,Skyline-Tower
+1235,1228,Gpp
+1236,1228,cloud migration
+1237,1229,cloud migration
+1238,1229,METRO EXPANSION
+1239,1230,METRO EXPANSION
+1240,1230,Skyline Tower
+1241,1232,Skyline-Tower
+1242,1232,METRO EXPANSION
+1243,1233,cloud migration
+1244,1237,gpp
+1245,1237,skyline tower
+1246,1239,Skyline Tower
+1247,1240,Skyline Tower
+1248,1241,GPP
+1249,1244,cloud migration
+1250,1245,metro expansion
+1251,1246,Skyline-Tower
+1252,1247,GPP project
+1253,1249,Skyline Tower
+1254,1249,Cloud Migration
+1255,1250,skyline tower
+1256,1253,Skyline Tower
+1257,1254,Skyline-Tower
+1258,1256,Skyline Tower
+1259,1256,gpp
+1260,1257,Gpp Project
+1261,1257,METRO EXPANSION
+1262,1258,GPP
+1263,1260,gpp
+1264,1261,Skyline Tower
+1265,1262,METRO EXPANSION
+1266,1263,Cloud Migration
+1267,1267,GPP project
+1268,1268,Gpp Project
+1269,1268,Cloud-Migration
+1270,1270,cloud migration
+1271,1270,skyline tower
+1272,1271,Skyline Tower
+1273,1272,Skyline-Tower
+1274,1273,Skyline-Tower
+1275,1277,GPP project
+1276,1278,Cloud-Migration
+1277,1278,metro expansion
+1278,1279,Cloud-Migration
+1279,1280,gpp
+1280,1281,SKYLINE TOWER
+1281,1282,METRO EXPANSION
+1282,1282,SKYLINE TOWER
+1283,1284,Cloud Migration
+1284,1284,SKYLINE TOWER
+1285,1286,cloud migration
+1286,1287,Cloud-Migration
+1287,1288,SKYLINE TOWER
+1288,1290,Cloud Migration
+1289,1292,skyline tower
+1290,1292,METRO EXPANSION
+1291,1293,GPP
+1292,1294,Gpp Project
+1293,1295,GPP project
+1294,1296,GPP
+1295,1296,Skyline-Tower
+1296,1297,skyline tower
+1297,1297,GPP
+1298,1298,metro expansion
+1299,1298,skyline tower
+1300,1299,Cloud Migration
+1301,1300,Gpp Project
+1302,1300,SKYLINE TOWER
+1303,1301,SKYLINE TOWER
+1304,1301,GPP
+1305,1302,Skyline Tower
+1306,1303,Skyline Tower
+1307,1304,cloud migration
+1308,1306,Skyline Tower
+1309,1306,gpp
+1310,1308,skyline tower
+1311,1308,cloud migration
+1312,1309,skyline tower
+1313,1309,cloud migration
+1314,1310,Gpp Project
+1315,1311,Cloud-Migration
+1316,1312,Skyline-Tower
+1317,1312,Cloud Migration
+1318,1313,Metro Expansion
+1319,1314,cloud migration
+1320,1314,skyline tower
+1321,1316,cloud migration
+1322,1316,Metro Expansion
+1323,1318,cloud migration
+1324,1318,SKYLINE TOWER
+1325,1320,Skyline-Tower
+1326,1320,Gpp Project
+1327,1322,metro expansion
+1328,1322,Cloud Migration
+1329,1323,SKYLINE TOWER
+1330,1323,Metro Expansion
+1331,1324,Skyline Tower
+1332,1325,metro expansion
+1333,1325,skyline tower
+1334,1326,Skyline-Tower
+1335,1327,skyline tower
+1336,1330,Gpp
+1337,1331,cloud migration
+1338,1331,skyline tower
+1339,1332,gpp
+1340,1334,cloud migration
+1341,1334,metro expansion
+1342,1335,cloud migration
+1343,1336,SKYLINE TOWER
+1344,1336,GPP project
+1345,1337,cloud migration
+1346,1337,Metro Expansion
+1347,1338,Skyline Tower
+1348,1339,Metro Expansion
+1349,1340,Gpp
+1350,1341,SKYLINE TOWER
+1351,1342,METRO EXPANSION
+1352,1343,gpp
+1353,1345,GPP project
+1354,1345,SKYLINE TOWER
+1355,1346,METRO EXPANSION
+1356,1346,Cloud Migration
+1357,1347,cloud migration
+1358,1348,Cloud-Migration
+1359,1349,Gpp
+1360,1350,skyline tower
+1361,1350,GPP project
+1362,1351,GPP project
+1363,1352,SKYLINE TOWER
+1364,1352,Gpp Project
+1365,1353,skyline tower
+1366,1354,Metro Expansion
+1367,1355,GPP project
+1368,1357,skyline tower
+1369,1357,cloud migration
+1370,1359,Cloud-Migration
+1371,1360,metro expansion
+1372,1362,GPP
+1373,1363,GPP
+1374,1363,cloud migration
+1375,1364,Cloud-Migration
+1376,1364,GPP
+1377,1365,skyline tower
+1378,1365,metro expansion
+1379,1366,METRO EXPANSION
+1380,1366,Skyline Tower
+1381,1367,GPP project
+1382,1367,cloud migration
+1383,1370,Cloud-Migration
+1384,1372,Cloud-Migration
+1385,1373,METRO EXPANSION
+1386,1373,GPP
+1387,1374,GPP project
+1388,1374,metro expansion
+1389,1375,Cloud-Migration
+1390,1376,Gpp Project
+1391,1378,skyline tower
+1392,1378,Gpp
+1393,1379,gpp
+1394,1379,Skyline Tower
+1395,1380,Cloud-Migration
+1396,1380,SKYLINE TOWER
+1397,1383,Skyline-Tower
+1398,1383,cloud migration
+1399,1384,Skyline-Tower
+1400,1385,metro expansion
+1401,1385,Cloud Migration
+1402,1386,Gpp
+1403,1386,Cloud-Migration
+1404,1387,metro expansion
+1405,1389,GPP
+1406,1390,Gpp Project
+1407,1390,Skyline Tower
+1408,1391,Gpp Project
+1409,1391,METRO EXPANSION
+1410,1394,Skyline Tower
+1411,1394,gpp
+1412,1396,Skyline-Tower
+1413,1397,Cloud Migration
+1414,1397,METRO EXPANSION
+1415,1398,skyline tower
+1416,1398,GPP
+1417,1399,GPP
+1418,1400,Gpp Project
+1419,1400,skyline tower
+1420,1403,Cloud-Migration
+1421,1403,Skyline-Tower
+1422,1406,Metro Expansion
+1423,1407,Gpp Project
+1424,1408,GPP
+1425,1408,skyline tower
+1426,1409,skyline tower
+1427,1410,METRO EXPANSION
+1428,1410,Gpp Project
+1429,1411,SKYLINE TOWER
+1430,1412,skyline tower
+1431,1412,Cloud-Migration
+1432,1413,Skyline-Tower
+1433,1414,metro expansion
+1434,1414,cloud migration
+1435,1415,Gpp Project
+1436,1415,Cloud Migration
+1437,1416,SKYLINE TOWER
+1438,1416,gpp
+1439,1417,Metro Expansion
+1440,1417,skyline tower
+1441,1418,Cloud-Migration
+1442,1420,GPP
+1443,1420,Skyline Tower
+1444,1421,METRO EXPANSION
+1445,1422,Metro Expansion
+1446,1424,Skyline-Tower
+1447,1424,Metro Expansion
+1448,1425,Gpp Project
+1449,1426,GPP project
+1450,1427,METRO EXPANSION
+1451,1428,Skyline Tower
+1452,1428,Metro Expansion
+1453,1429,gpp
+1454,1430,METRO EXPANSION
+1455,1433,Gpp
+1456,1433,SKYLINE TOWER
+1457,1434,METRO EXPANSION
+1458,1435,Cloud-Migration
+1459,1435,SKYLINE TOWER
+1460,1438,skyline tower
+1461,1438,Cloud-Migration
+1462,1439,Cloud-Migration
+1463,1439,Skyline Tower
+1464,1440,Skyline Tower
+1465,1442,GPP project
+1466,1442,Skyline Tower
+1467,1444,Cloud Migration
+1468,1444,SKYLINE TOWER
+1469,1445,METRO EXPANSION
+1470,1447,SKYLINE TOWER
+1471,1447,Cloud-Migration
+1472,1448,Cloud-Migration
+1473,1450,METRO EXPANSION
+1474,1450,Skyline Tower
+1475,1453,Gpp
+1476,1455,SKYLINE TOWER
+1477,1456,SKYLINE TOWER
+1478,1456,cloud migration
+1479,1457,Gpp
+1480,1457,cloud migration
+1481,1459,GPP project
+1482,1459,skyline tower
+1483,1460,metro expansion
+1484,1462,METRO EXPANSION
+1485,1462,Skyline-Tower
+1486,1464,cloud migration
+1487,1465,cloud migration
+1488,1468,Skyline-Tower
+1489,1468,Cloud Migration
+1490,1469,GPP
+1491,1469,METRO EXPANSION
+1492,1472,cloud migration
+1493,1472,GPP project
+1494,1473,Gpp Project
+1495,1475,Skyline Tower
+1496,1476,skyline tower
+1497,1476,GPP
+1498,1477,cloud migration
+1499,1478,skyline tower
+1500,1479,Skyline-Tower
+1501,1480,metro expansion
+1502,1481,metro expansion
+1503,1483,Cloud-Migration
+1504,1484,Cloud-Migration
+1505,1485,GPP project
+1506,1486,METRO EXPANSION
+1507,1487,Skyline-Tower
+1508,1488,Cloud Migration
+1509,1494,metro expansion
+1510,1495,metro expansion
+1511,1498,Cloud-Migration
+1512,1499,METRO EXPANSION
+1513,1499,gpp
+1514,1500,metro expansion
+1515,1500,Skyline Tower
+1516,1501,gpp
+1517,1502,gpp
+1518,1503,Cloud Migration
+1519,1503,GPP project
+1520,1505,METRO EXPANSION
+1521,1508,GPP project
+1522,1508,METRO EXPANSION
+1523,1511,Cloud-Migration
+1524,1511,SKYLINE TOWER
+1525,1512,Metro Expansion
+1526,1514,Gpp
+1527,1514,Metro Expansion
+1528,1515,Skyline Tower
+1529,1515,Cloud-Migration
+1530,1516,Cloud-Migration
+1531,1516,Skyline Tower
+1532,1518,GPP project
+1533,1518,cloud migration
+1534,1519,Cloud Migration
+1535,1519,Skyline-Tower
+1536,1521,Gpp Project
+1537,1522,Metro Expansion
+1538,1522,cloud migration
+1539,1524,Skyline-Tower
+1540,1525,metro expansion
+1541,1525,skyline tower
+1542,1526,metro expansion
+1543,1526,skyline tower
+1544,1527,cloud migration
+1545,1527,GPP
+1546,1528,cloud migration
+1547,1528,SKYLINE TOWER
+1548,1529,METRO EXPANSION
+1549,1529,Cloud Migration
+1550,1530,Metro Expansion
+1551,1530,Gpp Project
+1552,1531,Metro Expansion
+1553,1532,GPP project
+1554,1532,METRO EXPANSION
+1555,1533,GPP
+1556,1533,metro expansion
+1557,1535,GPP project
+1558,1535,Cloud Migration
+1559,1536,METRO EXPANSION
+1560,1537,Metro Expansion
+1561,1539,METRO EXPANSION
+1562,1539,SKYLINE TOWER
+1563,1540,Cloud-Migration
+1564,1540,SKYLINE TOWER
+1565,1541,Gpp
+1566,1542,Gpp
+1567,1544,Skyline-Tower
+1568,1547,SKYLINE TOWER
+1569,1547,Cloud Migration
+1570,1549,SKYLINE TOWER
+1571,1549,metro expansion
+1572,1550,skyline tower
+1573,1550,gpp
+1574,1551,Gpp
+1575,1551,metro expansion
+1576,1552,metro expansion
+1577,1555,Skyline-Tower
+1578,1556,SKYLINE TOWER
+1579,1558,Skyline-Tower
+1580,1561,Gpp
+1581,1564,METRO EXPANSION
+1582,1567,GPP project
+1583,1567,Cloud Migration
+1584,1568,Cloud Migration
+1585,1568,SKYLINE TOWER
+1586,1569,skyline tower
+1587,1570,Cloud Migration
+1588,1572,Cloud Migration
+1589,1572,gpp
+1590,1573,Metro Expansion
+1591,1574,Cloud Migration
+1592,1574,METRO EXPANSION
+1593,1575,Cloud Migration
+1594,1575,gpp
+1595,1578,gpp
+1596,1579,Skyline Tower
+1597,1579,cloud migration
+1598,1581,Skyline-Tower
+1599,1581,METRO EXPANSION
+1600,1582,gpp
+1601,1583,metro expansion
+1602,1583,Cloud Migration
+1603,1584,Gpp
+1604,1585,SKYLINE TOWER
+1605,1585,Cloud-Migration
+1606,1586,skyline tower
+1607,1587,gpp
+1608,1588,Metro Expansion
+1609,1588,GPP project
+1610,1592,gpp
+1611,1592,cloud migration
+1612,1593,SKYLINE TOWER
+1613,1593,Cloud-Migration
+1614,1596,Gpp Project
+1615,1597,gpp
+1616,1598,skyline tower
+1617,1599,metro expansion
+1618,1600,SKYLINE TOWER
+1619,1601,Gpp
+1620,1601,METRO EXPANSION
+1621,1602,Skyline-Tower
+1622,1603,Cloud-Migration
+1623,1604,gpp
+1624,1604,Cloud-Migration
+1625,1605,Cloud-Migration
+1626,1608,Gpp Project
+1627,1608,skyline tower
+1628,1609,Cloud Migration
+1629,1610,metro expansion
+1630,1610,gpp
+1631,1611,Metro Expansion
+1632,1613,Metro Expansion
+1633,1614,Cloud-Migration
+1634,1615,metro expansion
+1635,1616,GPP project
+1636,1616,metro expansion
+1637,1617,cloud migration
+1638,1617,METRO EXPANSION
+1639,1618,skyline tower
+1640,1618,Gpp
+1641,1619,Skyline Tower
+1642,1620,Skyline Tower
+1643,1622,Skyline Tower
+1644,1623,GPP project
+1645,1623,Cloud-Migration
+1646,1624,Gpp
+1647,1625,SKYLINE TOWER
+1648,1626,GPP
+1649,1626,metro expansion
+1650,1627,skyline tower
+1651,1627,Gpp Project
+1652,1628,Gpp
+1653,1632,Cloud Migration
+1654,1632,metro expansion
+1655,1634,SKYLINE TOWER
+1656,1634,metro expansion
+1657,1635,skyline tower
+1658,1636,skyline tower
+1659,1637,Skyline Tower
+1660,1640,Skyline Tower
+1661,1640,Metro Expansion
+1662,1645,skyline tower
+1663,1646,SKYLINE TOWER
+1664,1648,Cloud Migration
+1665,1648,METRO EXPANSION
+1666,1650,skyline tower
+1667,1651,Metro Expansion
+1668,1651,Skyline-Tower
+1669,1652,SKYLINE TOWER
+1670,1653,METRO EXPANSION
+1671,1653,Skyline-Tower
+1672,1654,Metro Expansion
+1673,1655,Cloud-Migration
+1674,1655,SKYLINE TOWER
+1675,1657,gpp
+1676,1659,Skyline-Tower
+1677,1659,GPP
+1678,1660,Gpp
+1679,1660,skyline tower
+1680,1661,Gpp
+1681,1662,Skyline Tower
+1682,1663,metro expansion
+1683,1663,skyline tower
+1684,1664,GPP project
+1685,1665,skyline tower
+1686,1665,Cloud-Migration
+1687,1667,METRO EXPANSION
+1688,1668,cloud migration
+1689,1668,metro expansion
+1690,1670,SKYLINE TOWER
+1691,1670,Metro Expansion
+1692,1671,SKYLINE TOWER
+1693,1671,GPP project
+1694,1673,skyline tower
+1695,1673,Gpp
+1696,1674,Skyline Tower
+1697,1674,Gpp
+1698,1675,METRO EXPANSION
+1699,1675,Gpp
+1700,1677,GPP project
+1701,1679,Gpp Project
+1702,1680,METRO EXPANSION
+1703,1680,GPP
+1704,1681,Metro Expansion
+1705,1683,Metro Expansion
+1706,1685,SKYLINE TOWER
+1707,1685,cloud migration
+1708,1686,Gpp Project
+1709,1687,skyline tower
+1710,1687,METRO EXPANSION
+1711,1688,metro expansion
+1712,1688,GPP project
+1713,1690,Skyline-Tower
+1714,1690,gpp
+1715,1692,SKYLINE TOWER
+1716,1693,Skyline-Tower
+1717,1693,Gpp Project
+1718,1694,Metro Expansion
+1719,1694,Cloud-Migration
+1720,1695,Gpp
+1721,1695,Skyline Tower
+1722,1696,METRO EXPANSION
+1723,1696,Skyline-Tower
+1724,1697,Metro Expansion
+1725,1698,Skyline-Tower
+1726,1698,Cloud Migration
+1727,1701,Skyline Tower
+1728,1701,GPP project
+1729,1703,Cloud-Migration
+1730,1703,GPP project
+1731,1704,metro expansion
+1732,1704,cloud migration
+1733,1705,cloud migration
+1734,1705,SKYLINE TOWER
+1735,1707,Gpp Project
+1736,1707,skyline tower
+1737,1708,metro expansion
+1738,1708,cloud migration
+1739,1710,Cloud Migration
+1740,1710,METRO EXPANSION
+1741,1712,Gpp
+1742,1713,SKYLINE TOWER
+1743,1714,Metro Expansion
+1744,1714,Cloud Migration
+1745,1715,gpp
+1746,1715,Skyline-Tower
+1747,1717,Metro Expansion
+1748,1717,GPP project
+1749,1718,cloud migration
+1750,1718,Skyline Tower
+1751,1719,METRO EXPANSION
+1752,1719,gpp
+1753,1720,cloud migration
+1754,1720,Skyline Tower
+1755,1723,Metro Expansion
+1756,1724,Metro Expansion
+1757,1725,Skyline-Tower
+1758,1725,gpp
+1759,1726,skyline tower
+1760,1727,gpp
+1761,1729,Gpp
+1762,1730,gpp
+1763,1732,Metro Expansion
+1764,1732,GPP
+1765,1733,GPP project
+1766,1733,skyline tower
+1767,1734,gpp
+1768,1734,Metro Expansion
+1769,1735,Gpp
+1770,1735,Metro Expansion
+1771,1736,Skyline-Tower
+1772,1737,cloud migration
+1773,1738,Cloud Migration
+1774,1739,Cloud-Migration
+1775,1740,cloud migration
+1776,1740,skyline tower
+1777,1741,Cloud Migration
+1778,1741,Metro Expansion
+1779,1742,GPP project
+1780,1743,GPP
+1781,1743,METRO EXPANSION
+1782,1745,Gpp
+1783,1745,cloud migration
+1784,1746,gpp
+1785,1747,Metro Expansion
+1786,1750,Cloud-Migration
+1787,1750,Skyline Tower
+1788,1752,METRO EXPANSION
+1789,1755,Gpp
+1790,1755,skyline tower
+1791,1756,gpp
+1792,1756,METRO EXPANSION
+1793,1759,Skyline Tower
+1794,1760,Cloud Migration
+1795,1760,SKYLINE TOWER
+1796,1765,gpp
+1797,1766,Skyline Tower
+1798,1766,gpp
+1799,1767,Gpp
+1800,1769,Cloud-Migration
+1801,1770,GPP project
+1802,1771,GPP project
+1803,1772,METRO EXPANSION
+1804,1774,gpp
+1805,1775,Skyline Tower
+1806,1775,cloud migration
+1807,1776,Gpp Project
+1808,1777,gpp
+1809,1778,Skyline-Tower
+1810,1778,Cloud Migration
+1811,1779,SKYLINE TOWER
+1812,1779,Gpp
+1813,1780,Cloud Migration
+1814,1780,gpp
+1815,1784,Cloud-Migration
+1816,1784,GPP project
+1817,1786,SKYLINE TOWER
+1818,1787,Skyline Tower
+1819,1787,Cloud Migration
+1820,1788,GPP project
+1821,1789,gpp
+1822,1790,cloud migration
+1823,1790,gpp
+1824,1793,Gpp
+1825,1793,Skyline-Tower
+1826,1798,SKYLINE TOWER
+1827,1799,gpp
+1828,1799,metro expansion
+1829,1800,Skyline Tower
+1830,1800,Cloud-Migration
+1831,1801,Cloud Migration
+1832,1801,METRO EXPANSION
+1833,1802,Cloud-Migration
+1834,1802,Metro Expansion
+1835,1803,skyline tower
+1836,1804,GPP
+1837,1805,Gpp Project
+1838,1805,METRO EXPANSION
+1839,1808,gpp
+1840,1808,Metro Expansion
+1841,1810,Gpp Project
+1842,1810,cloud migration
+1843,1811,Gpp
+1844,1811,METRO EXPANSION
+1845,1812,Skyline-Tower
+1846,1812,metro expansion
+1847,1813,Gpp Project
+1848,1813,SKYLINE TOWER
+1849,1814,SKYLINE TOWER
+1850,1814,Cloud-Migration
+1851,1816,Metro Expansion
+1852,1818,cloud migration
+1853,1819,skyline tower
+1854,1819,Cloud-Migration
+1855,1820,Cloud-Migration
+1856,1820,metro expansion
+1857,1821,METRO EXPANSION
+1858,1825,Gpp
+1859,1826,Skyline-Tower
+1860,1826,Metro Expansion
+1861,1827,Skyline Tower
+1862,1828,cloud migration
+1863,1828,Skyline-Tower
+1864,1829,Skyline-Tower
+1865,1829,metro expansion
+1866,1830,GPP
+1867,1831,Gpp Project
+1868,1832,Skyline Tower
+1869,1832,Cloud-Migration
+1870,1833,SKYLINE TOWER
+1871,1833,Metro Expansion
+1872,1834,Skyline Tower
+1873,1834,gpp
+1874,1835,Skyline Tower
+1875,1836,skyline tower
+1876,1836,metro expansion
+1877,1837,GPP project
+1878,1838,Skyline Tower
+1879,1838,GPP project
+1880,1840,Metro Expansion
+1881,1840,Cloud-Migration
+1882,1842,Cloud Migration
+1883,1843,cloud migration
+1884,1843,Metro Expansion
+1885,1846,METRO EXPANSION
+1886,1846,Gpp
+1887,1847,Gpp Project
+1888,1847,Metro Expansion
+1889,1848,cloud migration
+1890,1848,skyline tower
+1891,1849,Gpp Project
+1892,1850,skyline tower
+1893,1852,metro expansion
+1894,1852,GPP project
+1895,1853,cloud migration
+1896,1853,metro expansion
+1897,1855,Metro Expansion
+1898,1855,Skyline Tower
+1899,1856,GPP
+1900,1856,Skyline Tower
+1901,1857,Skyline-Tower
+1902,1857,Gpp Project
+1903,1859,Gpp Project
+1904,1860,gpp
+1905,1860,Skyline-Tower
+1906,1861,Metro Expansion
+1907,1862,Metro Expansion
+1908,1862,gpp
+1909,1864,GPP project
+1910,1866,Gpp
+1911,1867,GPP project
+1912,1867,Skyline Tower
+1913,1868,Gpp Project
+1914,1868,Metro Expansion
+1915,1869,METRO EXPANSION
+1916,1869,Cloud Migration
+1917,1870,Cloud-Migration
+1918,1871,Gpp
+1919,1874,cloud migration
+1920,1875,GPP project
+1921,1875,cloud migration
+1922,1876,metro expansion
+1923,1878,Gpp
+1924,1878,Skyline-Tower
+1925,1879,Skyline Tower
+1926,1880,cloud migration
+1927,1881,SKYLINE TOWER
+1928,1881,GPP
+1929,1882,Skyline-Tower
+1930,1882,Metro Expansion
+1931,1884,GPP project
+1932,1884,cloud migration
+1933,1885,cloud migration
+1934,1886,cloud migration
+1935,1887,SKYLINE TOWER
+1936,1889,SKYLINE TOWER
+1937,1890,Cloud Migration
+1938,1890,skyline tower
+1939,1891,Gpp Project
+1940,1895,GPP
+1941,1897,GPP
+1942,1901,skyline tower
+1943,1901,Gpp
+1944,1902,GPP project
+1945,1904,GPP project
+1946,1904,metro expansion
+1947,1905,Metro Expansion
+1948,1906,Cloud Migration
+1949,1907,GPP project
+1950,1907,SKYLINE TOWER
+1951,1908,METRO EXPANSION
+1952,1910,SKYLINE TOWER
+1953,1911,Cloud Migration
+1954,1911,metro expansion
+1955,1912,skyline tower
+1956,1912,GPP project
+1957,1913,cloud migration
+1958,1913,GPP
+1959,1915,METRO EXPANSION
+1960,1918,Cloud-Migration
+1961,1918,Gpp
+1962,1919,metro expansion
+1963,1919,SKYLINE TOWER
+1964,1920,SKYLINE TOWER
+1965,1920,GPP project
+1966,1921,Cloud-Migration
+1967,1921,skyline tower
+1968,1923,cloud migration
+1969,1923,skyline tower
+1970,1924,GPP
+1971,1924,Metro Expansion
+1972,1926,metro expansion
+1973,1926,cloud migration
+1974,1928,metro expansion
+1975,1928,skyline tower
+1976,1929,Skyline-Tower
+1977,1929,Metro Expansion
+1978,1930,Gpp Project
+1979,1932,metro expansion
+1980,1932,skyline tower
+1981,1933,cloud migration
+1982,1933,metro expansion
+1983,1934,Skyline Tower
+1984,1935,SKYLINE TOWER
+1985,1935,Metro Expansion
+1986,1936,Gpp
+1987,1936,cloud migration
+1988,1937,Skyline-Tower
+1989,1937,METRO EXPANSION
+1990,1938,skyline tower
+1991,1939,Cloud-Migration
+1992,1940,GPP
+1993,1940,skyline tower
+1994,1942,cloud migration
+1995,1943,Gpp Project
+1996,1943,metro expansion
+1997,1947,cloud migration
+1998,1948,Cloud-Migration
+1999,1948,Metro Expansion
+2000,1949,METRO EXPANSION
+2001,1949,gpp
+2002,1950,METRO EXPANSION
+2003,1952,SKYLINE TOWER
+2004,1952,metro expansion
+2005,1953,gpp
+2006,1953,METRO EXPANSION
+2007,1954,Metro Expansion
+2008,1955,Skyline-Tower
+2009,1955,Metro Expansion
+2010,1956,SKYLINE TOWER
+2011,1956,metro expansion
+2012,1957,Gpp Project
+2013,1959,METRO EXPANSION
+2014,1960,Cloud Migration
+2015,1960,Gpp Project
+2016,1961,Cloud Migration
+2017,1961,skyline tower
+2018,1962,SKYLINE TOWER
+2019,1962,Gpp
+2020,1964,GPP project
+2021,1965,GPP
+2022,1965,metro expansion
+2023,1966,cloud migration
+2024,1966,Metro Expansion
+2025,1968,Gpp Project
+2026,1969,SKYLINE TOWER
+2027,1969,gpp
+2028,1972,SKYLINE TOWER
+2029,1972,metro expansion
+2030,1973,Gpp Project
+2031,1976,gpp
+2032,1977,cloud migration
+2033,1977,Metro Expansion
+2034,1978,GPP project
+2035,1979,skyline tower
+2036,1982,Metro Expansion
+2037,1982,Cloud-Migration
+2038,1983,Gpp Project
+2039,1983,Skyline-Tower
+2040,1984,cloud migration
+2041,1985,GPP
+2042,1986,SKYLINE TOWER
+2043,1987,Cloud-Migration
+2044,1989,Skyline-Tower
+2045,1989,Cloud Migration
+2046,1991,gpp
+2047,1993,cloud migration
+2048,1995,GPP project
+2049,1996,SKYLINE TOWER
+2050,1996,GPP project
+2051,1997,gpp
+2052,1998,SKYLINE TOWER
+2053,1998,METRO EXPANSION
+2054,2000,METRO EXPANSION
+2055,2001,GPP project
+2056,2002,Skyline-Tower
+2057,2002,METRO EXPANSION
+2058,2003,cloud migration
+2059,2006,gpp
+2060,2007,GPP
+2061,2008,Metro Expansion
+2062,2009,Cloud Migration
+2063,2009,Skyline Tower
+2064,2011,Skyline-Tower
+2065,2011,Cloud-Migration
+2066,2012,SKYLINE TOWER
+2067,2012,METRO EXPANSION
+2068,2013,cloud migration
+2069,2013,Gpp Project
+2070,2015,cloud migration
+2071,2015,Skyline-Tower
+2072,2016,Metro Expansion
+2073,2019,Cloud Migration
+2074,2020,Metro Expansion
+2075,2022,METRO EXPANSION
+2076,2025,SKYLINE TOWER
+2077,2025,Cloud-Migration
+2078,2026,Metro Expansion
+2079,2027,Skyline-Tower
+2080,2027,metro expansion
+2081,2028,Cloud Migration
+2082,2029,metro expansion
+2083,2030,Metro Expansion
+2084,2032,Skyline-Tower
+2085,2033,metro expansion
+2086,2035,METRO EXPANSION
+2087,2038,gpp
+2088,2038,metro expansion
+2089,2040,metro expansion
+2090,2041,cloud migration
+2091,2042,Skyline Tower
+2092,2042,Metro Expansion
+2093,2043,Cloud-Migration
+2094,2043,skyline tower
+2095,2044,gpp
+2096,2046,Metro Expansion
+2097,2046,Cloud-Migration
+2098,2047,gpp
+2099,2048,SKYLINE TOWER
+2100,2048,Cloud Migration
+2101,2051,Cloud Migration
+2102,2051,METRO EXPANSION
+2103,2052,metro expansion
+2104,2054,Gpp
+2105,2055,Metro Expansion
+2106,2055,cloud migration
+2107,2056,Cloud-Migration
+2108,2056,metro expansion
+2109,2057,GPP project
+2110,2057,metro expansion
+2111,2059,Skyline-Tower
+2112,2061,cloud migration
+2113,2064,Cloud-Migration
+2114,2065,Skyline-Tower
+2115,2066,GPP project
+2116,2066,Skyline Tower
+2117,2067,Skyline Tower
+2118,2068,cloud migration
+2119,2068,GPP project
+2120,2071,Cloud Migration
+2121,2071,gpp
+2122,2073,Skyline Tower
+2123,2073,GPP project
+2124,2074,Cloud-Migration
+2125,2076,SKYLINE TOWER
+2126,2077,Cloud-Migration
+2127,2077,METRO EXPANSION
+2128,2078,cloud migration
+2129,2078,skyline tower
+2130,2079,Gpp
+2131,2079,Metro Expansion
+2132,2080,Cloud-Migration
+2133,2081,SKYLINE TOWER
+2134,2081,GPP project
+2135,2082,cloud migration
+2136,2084,cloud migration
+2137,2084,GPP project
+2138,2086,METRO EXPANSION
+2139,2086,Cloud-Migration
+2140,2087,Cloud-Migration
+2141,2089,Cloud-Migration
+2142,2090,skyline tower
+2143,2091,Skyline Tower
+2144,2093,Skyline Tower
+2145,2093,Cloud Migration
+2146,2094,SKYLINE TOWER
+2147,2095,Metro Expansion
+2148,2096,Cloud Migration
+2149,2098,METRO EXPANSION
+2150,2102,gpp
+2151,2102,Metro Expansion
+2152,2103,Gpp Project
+2153,2105,GPP project
+2154,2106,Cloud-Migration
+2155,2107,Skyline Tower
+2156,2110,metro expansion
+2157,2112,Skyline-Tower
+2158,2112,gpp
+2159,2114,Metro Expansion
+2160,2116,skyline tower
+2161,2117,Skyline Tower
+2162,2117,Metro Expansion
+2163,2120,METRO EXPANSION
+2164,2121,cloud migration
+2165,2122,Gpp Project
+2166,2122,SKYLINE TOWER
+2167,2123,Cloud Migration
+2168,2123,skyline tower
+2169,2125,cloud migration
+2170,2125,GPP project
+2171,2126,skyline tower
+2172,2126,Cloud Migration
+2173,2129,SKYLINE TOWER
+2174,2130,metro expansion
+2175,2132,Cloud-Migration
+2176,2133,Skyline-Tower
+2177,2133,Cloud Migration
+2178,2134,METRO EXPANSION
+2179,2135,METRO EXPANSION
+2180,2136,GPP project
+2181,2136,Cloud Migration
+2182,2138,Cloud Migration
+2183,2139,Skyline Tower
+2184,2139,metro expansion
+2185,2140,Gpp
+2186,2140,SKYLINE TOWER
+2187,2142,Skyline Tower
+2188,2142,Gpp Project
+2189,2144,cloud migration
+2190,2146,metro expansion
+2191,2146,Gpp Project
+2192,2147,Cloud Migration
+2193,2147,Metro Expansion
+2194,2148,Skyline-Tower
+2195,2148,Metro Expansion
+2196,2154,skyline tower
+2197,2154,METRO EXPANSION
+2198,2155,gpp
+2199,2155,Cloud Migration
+2200,2156,metro expansion
+2201,2156,cloud migration
+2202,2157,Cloud Migration
+2203,2158,GPP project
+2204,2159,GPP
+2205,2159,cloud migration
+2206,2160,gpp
+2207,2160,Cloud-Migration
+2208,2161,METRO EXPANSION
+2209,2161,Skyline Tower
+2210,2163,SKYLINE TOWER
+2211,2163,Gpp
+2212,2165,gpp
+2213,2166,Metro Expansion
+2214,2169,gpp
+2215,2169,cloud migration
+2216,2170,METRO EXPANSION
+2217,2170,Cloud-Migration
+2218,2171,Skyline Tower
+2219,2171,METRO EXPANSION
+2220,2172,Gpp Project
+2221,2173,Gpp Project
+2222,2176,Metro Expansion
+2223,2177,cloud migration
+2224,2178,SKYLINE TOWER
+2225,2178,Gpp Project
+2226,2179,Skyline-Tower
+2227,2181,GPP project
+2228,2181,Cloud-Migration
+2229,2185,Skyline-Tower
+2230,2187,Cloud Migration
+2231,2187,SKYLINE TOWER
+2232,2188,SKYLINE TOWER
+2233,2189,Cloud Migration
+2234,2189,GPP
+2235,2191,Cloud Migration
+2236,2191,gpp
+2237,2193,Skyline Tower
+2238,2194,skyline tower
+2239,2195,Cloud-Migration
+2240,2197,gpp
+2241,2198,cloud migration
+2242,2198,GPP project
+2243,2199,metro expansion
+2244,2200,GPP project
+2245,2201,SKYLINE TOWER
+2246,2201,GPP
+2247,2202,Cloud-Migration
+2248,2203,GPP
+2249,2204,skyline tower
+2250,2204,Cloud-Migration
+2251,2206,Gpp Project
+2252,2206,Cloud-Migration
+2253,2207,GPP project
+2254,2207,metro expansion
+2255,2208,Cloud-Migration
+2256,2210,Metro Expansion
+2257,2210,Gpp Project
+2258,2211,Cloud-Migration
+2259,2212,Gpp
+2260,2212,SKYLINE TOWER
+2261,2214,Gpp Project
+2262,2214,Cloud-Migration
+2263,2215,SKYLINE TOWER
+2264,2215,cloud migration
+2265,2216,Skyline Tower
+2266,2216,Metro Expansion
+2267,2217,Gpp
+2268,2218,Cloud Migration
+2269,2222,Cloud-Migration
+2270,2223,metro expansion
+2271,2223,Cloud Migration
+2272,2224,gpp
+2273,2224,Skyline-Tower
+2274,2225,gpp
+2275,2225,Cloud Migration
+2276,2226,METRO EXPANSION
+2277,2226,Cloud Migration
+2278,2227,gpp
+2279,2229,GPP
+2280,2229,Metro Expansion
+2281,2230,cloud migration
+2282,2230,GPP
+2283,2233,metro expansion
+2284,2234,Gpp
+2285,2234,METRO EXPANSION
+2286,2236,Metro Expansion
+2287,2236,Cloud Migration
+2288,2237,metro expansion
+2289,2237,Cloud Migration
+2290,2238,Metro Expansion
+2291,2239,cloud migration
+2292,2239,gpp
+2293,2240,gpp
+2294,2241,Gpp
+2295,2242,Cloud Migration
+2296,2242,GPP
+2297,2243,skyline tower
+2298,2243,Metro Expansion
+2299,2244,SKYLINE TOWER
+2300,2246,Cloud Migration
+2301,2249,skyline tower
+2302,2250,Gpp Project
+2303,2251,Metro Expansion
+2304,2252,Cloud Migration
+2305,2252,GPP
+2306,2253,Cloud-Migration
+2307,2254,Metro Expansion
+2308,2254,Cloud-Migration
+2309,2255,GPP
+2310,2255,Cloud Migration
+2311,2257,Skyline Tower
+2312,2257,GPP
+2313,2258,Cloud-Migration
+2314,2259,metro expansion
+2315,2260,cloud migration
+2316,2260,Metro Expansion
+2317,2263,SKYLINE TOWER
+2318,2263,Cloud Migration
+2319,2264,SKYLINE TOWER
+2320,2265,Cloud Migration
+2321,2267,GPP project
+2322,2267,metro expansion
+2323,2268,Gpp
+2324,2268,Skyline Tower
+2325,2269,Metro Expansion
+2326,2270,METRO EXPANSION
+2327,2270,GPP
+2328,2271,Skyline-Tower
+2329,2273,cloud migration
+2330,2277,cloud migration
+2331,2277,gpp
+2332,2280,gpp
+2333,2281,Cloud-Migration
+2334,2281,METRO EXPANSION
+2335,2282,gpp
+2336,2282,SKYLINE TOWER
+2337,2284,metro expansion
+2338,2284,Cloud-Migration
+2339,2285,Skyline-Tower
+2340,2286,SKYLINE TOWER
+2341,2290,skyline tower
+2342,2291,metro expansion
+2343,2291,Gpp Project
+2344,2292,Skyline Tower
+2345,2293,skyline tower
+2346,2293,Gpp Project
+2347,2295,cloud migration
+2348,2295,gpp
+2349,2297,SKYLINE TOWER
+2350,2297,Metro Expansion
+2351,2299,metro expansion
+2352,2300,GPP
+2353,2300,cloud migration
+2354,2301,Cloud Migration
+2355,2302,Metro Expansion
+2356,2302,Gpp
+2357,2305,Gpp
+2358,2312,cloud migration
+2359,2313,Skyline Tower
+2360,2314,Skyline-Tower
+2361,2315,Cloud-Migration
+2362,2315,METRO EXPANSION
+2363,2317,METRO EXPANSION
+2364,2318,skyline tower
+2365,2318,metro expansion
+2366,2319,Gpp
+2367,2320,gpp
+2368,2321,Cloud-Migration
+2369,2321,Skyline-Tower
+2370,2322,Cloud Migration
+2371,2322,metro expansion
+2372,2323,Cloud-Migration
+2373,2324,GPP
+2374,2326,GPP project
+2375,2327,Cloud-Migration
+2376,2327,Skyline-Tower
+2377,2328,Skyline-Tower
+2378,2329,Cloud Migration
+2379,2329,Gpp Project
+2380,2330,GPP
+2381,2331,GPP
+2382,2332,metro expansion
+2383,2332,Skyline Tower
+2384,2333,Metro Expansion
+2385,2333,Cloud Migration
+2386,2338,gpp
+2387,2341,METRO EXPANSION
+2388,2341,Cloud Migration
+2389,2343,Skyline Tower
+2390,2343,gpp
+2391,2347,GPP project
+2392,2348,cloud migration
+2393,2349,METRO EXPANSION
+2394,2349,Skyline-Tower
+2395,2351,GPP
+2396,2352,Metro Expansion
+2397,2352,GPP
+2398,2353,Cloud-Migration
+2399,2354,skyline tower
+2400,2355,GPP project
+2401,2355,Cloud Migration
+2402,2356,METRO EXPANSION
+2403,2357,Gpp
+2404,2358,Metro Expansion
+2405,2360,SKYLINE TOWER
+2406,2361,METRO EXPANSION
+2407,2362,Skyline-Tower
+2408,2364,Cloud-Migration
+2409,2365,Cloud Migration
+2410,2365,Skyline Tower
+2411,2366,Cloud-Migration
+2412,2369,METRO EXPANSION
+2413,2370,Metro Expansion
+2414,2373,Cloud-Migration
+2415,2373,SKYLINE TOWER
+2416,2375,Metro Expansion
+2417,2376,Skyline-Tower
+2418,2377,Cloud Migration
+2419,2378,METRO EXPANSION
+2420,2379,Cloud Migration
+2421,2381,GPP
+2422,2381,skyline tower
+2423,2382,cloud migration
+2424,2382,METRO EXPANSION
+2425,2384,cloud migration
+2426,2385,cloud migration
+2427,2386,METRO EXPANSION
+2428,2386,skyline tower
+2429,2387,skyline tower
+2430,2388,Gpp Project
+2431,2388,METRO EXPANSION
+2432,2390,cloud migration
+2433,2391,Metro Expansion
+2434,2393,METRO EXPANSION
+2435,2394,METRO EXPANSION
+2436,2394,Skyline-Tower
+2437,2395,Cloud Migration
+2438,2395,METRO EXPANSION
+2439,2396,GPP project
+2440,2397,gpp
+2441,2398,Metro Expansion
+2442,2398,Skyline Tower
+2443,2401,Skyline Tower
+2444,2402,Gpp
+2445,2403,SKYLINE TOWER
+2446,2404,skyline tower
+2447,2404,Gpp Project
+2448,2405,metro expansion
+2449,2405,skyline tower
+2450,2406,gpp
+2451,2407,METRO EXPANSION
+2452,2408,Skyline Tower
+2453,2408,cloud migration
+2454,2409,METRO EXPANSION
+2455,2410,metro expansion
+2456,2410,skyline tower
+2457,2411,Cloud Migration
+2458,2411,SKYLINE TOWER
+2459,2413,Metro Expansion
+2460,2414,Skyline Tower
+2461,2414,Gpp
+2462,2417,GPP
+2463,2418,METRO EXPANSION
+2464,2419,GPP project
+2465,2421,Metro Expansion
+2466,2422,GPP
+2467,2422,METRO EXPANSION
+2468,2423,cloud migration
+2469,2425,Cloud Migration
+2470,2425,Skyline-Tower
+2471,2427,GPP
+2472,2428,Skyline Tower
+2473,2428,Gpp Project
+2474,2429,Cloud-Migration
+2475,2430,Skyline Tower
+2476,2430,gpp
+2477,2431,gpp
+2478,2431,Skyline Tower
+2479,2432,Cloud-Migration
+2480,2434,METRO EXPANSION
+2481,2434,cloud migration
+2482,2435,Metro Expansion
+2483,2437,METRO EXPANSION
+2484,2438,GPP
+2485,2439,Gpp
+2486,2439,Cloud Migration
+2487,2440,cloud migration
+2488,2440,Skyline Tower
+2489,2441,GPP project
+2490,2446,GPP project
+2491,2447,Gpp Project
+2492,2448,Cloud-Migration
+2493,2450,cloud migration
+2494,2450,Gpp Project
+2495,2451,Metro Expansion
+2496,2453,SKYLINE TOWER
+2497,2457,gpp
+2498,2460,GPP project
+2499,2460,skyline tower
+2500,2463,Cloud-Migration
+2501,2463,SKYLINE TOWER
+2502,2464,Skyline-Tower
+2503,2464,metro expansion
+2504,2465,Skyline-Tower
+2505,2468,Cloud-Migration
+2506,2469,Cloud-Migration
+2507,2469,metro expansion
+2508,2471,GPP
+2509,2471,Cloud Migration
+2510,2474,METRO EXPANSION
+2511,2474,Gpp Project
+2512,2477,skyline tower
+2513,2477,Cloud Migration
+2514,2479,cloud migration
+2515,2481,METRO EXPANSION
+2516,2483,skyline tower
+2517,2484,METRO EXPANSION
+2518,2485,cloud migration
+2519,2485,metro expansion
+2520,2487,Gpp
+2521,2488,GPP project
+2522,2489,METRO EXPANSION
+2523,2489,SKYLINE TOWER
+2524,2491,skyline tower
+2525,2492,Cloud Migration
+2526,2492,GPP
+2527,2493,Cloud Migration
+2528,2494,Cloud-Migration
+2529,2494,Metro Expansion
+2530,2495,Cloud-Migration
+2531,2496,GPP
+2532,2498,Cloud-Migration
+2533,2498,METRO EXPANSION
+2534,2499,metro expansion
+2535,2501,Gpp
+2536,2501,Skyline-Tower
+2537,2502,Gpp
+2538,2503,Cloud Migration
+2539,2503,SKYLINE TOWER
+2540,2506,Cloud Migration
+2541,2508,SKYLINE TOWER
+2542,2509,metro expansion
+2543,2510,gpp
+2544,2511,Metro Expansion
+2545,2511,Gpp Project
+2546,2512,gpp
+2547,2512,Skyline-Tower
+2548,2513,skyline tower
+2549,2513,GPP project
+2550,2514,GPP
+2551,2516,Metro Expansion
+2552,2518,Skyline-Tower
+2553,2520,Gpp Project
+2554,2520,SKYLINE TOWER
+2555,2524,skyline tower
+2556,2524,Cloud-Migration
+2557,2525,Gpp Project
+2558,2526,metro expansion
+2559,2527,GPP project
+2560,2528,METRO EXPANSION
+2561,2529,skyline tower
+2562,2530,METRO EXPANSION
+2563,2530,skyline tower
+2564,2531,Cloud Migration
+2565,2532,skyline tower
+2566,2533,METRO EXPANSION
+2567,2533,Gpp
+2568,2534,skyline tower
+2569,2534,cloud migration
+2570,2535,Gpp Project
+2571,2535,skyline tower
+2572,2536,Cloud-Migration
+2573,2537,Cloud-Migration
+2574,2538,GPP
+2575,2538,metro expansion
+2576,2539,metro expansion
+2577,2539,skyline tower
+2578,2545,Metro Expansion
+2579,2546,Skyline-Tower
+2580,2546,METRO EXPANSION
+2581,2548,Cloud Migration
+2582,2549,Skyline Tower
+2583,2549,Metro Expansion
+2584,2551,gpp
+2585,2553,GPP project
+2586,2553,cloud migration
+2587,2554,Skyline-Tower
+2588,2555,skyline tower
+2589,2555,METRO EXPANSION
+2590,2557,Cloud-Migration
+2591,2557,METRO EXPANSION
+2592,2558,metro expansion
+2593,2558,cloud migration
+2594,2560,Cloud-Migration
+2595,2562,skyline tower
+2596,2562,metro expansion
+2597,2563,SKYLINE TOWER
+2598,2563,GPP
+2599,2564,Cloud-Migration
+2600,2564,GPP
+2601,2565,METRO EXPANSION
+2602,2565,Cloud Migration
+2603,2566,Cloud-Migration
+2604,2566,Gpp Project
+2605,2568,Gpp Project
+2606,2568,METRO EXPANSION
+2607,2569,GPP
+2608,2569,skyline tower
+2609,2571,Skyline-Tower
+2610,2573,metro expansion
+2611,2576,METRO EXPANSION
+2612,2577,Skyline-Tower
+2613,2578,skyline tower
+2614,2579,Cloud Migration
+2615,2579,Gpp
+2616,2581,Metro Expansion
+2617,2583,GPP
+2618,2584,skyline tower
+2619,2585,cloud migration
+2620,2585,Skyline Tower
+2621,2587,Cloud-Migration
+2622,2587,Skyline Tower
+2623,2588,Gpp Project
+2624,2589,SKYLINE TOWER
+2625,2590,Metro Expansion
+2626,2590,Gpp
+2627,2591,Cloud-Migration
+2628,2591,Skyline Tower
+2629,2592,metro expansion
+2630,2592,skyline tower
+2631,2593,Cloud-Migration
+2632,2593,SKYLINE TOWER
+2633,2594,GPP
+2634,2595,Gpp
+2635,2595,Cloud-Migration
+2636,2597,skyline tower
+2637,2598,GPP
+2638,2598,METRO EXPANSION
+2639,2599,cloud migration
+2640,2600,GPP project
+2641,2602,Metro Expansion
+2642,2603,Cloud-Migration
+2643,2604,metro expansion
+2644,2605,GPP project
+2645,2605,metro expansion
+2646,2606,Cloud Migration
+2647,2606,skyline tower
+2648,2609,metro expansion
+2649,2610,Metro Expansion
+2650,2610,cloud migration
+2651,2612,gpp
+2652,2614,metro expansion
+2653,2614,Gpp Project
+2654,2616,Skyline-Tower
+2655,2619,cloud migration
+2656,2620,Metro Expansion
+2657,2625,METRO EXPANSION
+2658,2625,GPP
+2659,2626,Cloud-Migration
+2660,2626,GPP
+2661,2627,gpp
+2662,2627,cloud migration
+2663,2630,Metro Expansion
+2664,2632,SKYLINE TOWER
+2665,2632,METRO EXPANSION
+2666,2634,METRO EXPANSION
+2667,2634,Gpp
+2668,2637,GPP
+2669,2638,Metro Expansion
+2670,2639,Metro Expansion
+2671,2639,gpp
+2672,2640,Cloud Migration
+2673,2640,METRO EXPANSION
+2674,2641,Metro Expansion
+2675,2641,GPP project
+2676,2643,Gpp
+2677,2643,skyline tower
+2678,2644,metro expansion
+2679,2645,gpp
+2680,2645,metro expansion
+2681,2648,SKYLINE TOWER
+2682,2648,Cloud Migration
+2683,2649,Cloud-Migration
+2684,2650,skyline tower
+2685,2650,Metro Expansion
+2686,2651,SKYLINE TOWER
+2687,2652,Gpp
+2688,2653,metro expansion
+2689,2653,Skyline Tower
+2690,2654,Cloud-Migration
+2691,2654,Metro Expansion
+2692,2655,Gpp
+2693,2655,SKYLINE TOWER
+2694,2656,Skyline Tower
+2695,2657,Metro Expansion
+2696,2658,Cloud Migration
+2697,2658,skyline tower
+2698,2660,Cloud Migration
+2699,2660,GPP project
+2700,2661,metro expansion
+2701,2663,GPP project
+2702,2665,Metro Expansion
+2703,2667,GPP project
+2704,2668,Skyline-Tower
+2705,2668,Cloud Migration
+2706,2670,metro expansion
+2707,2672,Metro Expansion
+2708,2676,Metro Expansion
+2709,2677,cloud migration
+2710,2677,Metro Expansion
+2711,2678,Cloud Migration
+2712,2678,Skyline Tower
+2713,2679,Gpp Project
+2714,2680,skyline tower
+2715,2682,GPP project
+2716,2682,metro expansion
+2717,2683,Cloud-Migration
+2718,2683,Skyline-Tower
+2719,2684,metro expansion
+2720,2684,Skyline Tower
+2721,2686,SKYLINE TOWER
+2722,2686,metro expansion
+2723,2689,metro expansion
+2724,2691,Cloud Migration
+2725,2692,gpp
+2726,2693,SKYLINE TOWER
+2727,2693,Metro Expansion
+2728,2695,cloud migration
+2729,2695,GPP project
+2730,2696,metro expansion
+2731,2697,Cloud-Migration
+2732,2698,gpp
+2733,2698,Metro Expansion
+2734,2699,SKYLINE TOWER
+2735,2700,gpp
+2736,2700,metro expansion
+2737,2702,Gpp
+2738,2703,metro expansion
+2739,2703,Cloud Migration
+2740,2704,Skyline Tower
+2741,2704,Gpp
+2742,2706,Cloud-Migration
+2743,2706,skyline tower
+2744,2707,SKYLINE TOWER
+2745,2708,METRO EXPANSION
+2746,2708,Cloud Migration
+2747,2709,cloud migration
+2748,2709,skyline tower
+2749,2710,metro expansion
+2750,2710,Cloud-Migration
+2751,2711,SKYLINE TOWER
+2752,2711,gpp
+2753,2713,Cloud Migration
+2754,2714,Cloud Migration
+2755,2715,Cloud Migration
+2756,2715,GPP project
+2757,2717,Metro Expansion
+2758,2718,metro expansion
+2759,2718,cloud migration
+2760,2720,Metro Expansion
+2761,2720,Skyline-Tower
+2762,2721,METRO EXPANSION
+2763,2721,Cloud Migration
+2764,2722,metro expansion
+2765,2722,Cloud Migration
+2766,2724,Cloud Migration
+2767,2724,METRO EXPANSION
+2768,2725,METRO EXPANSION
+2769,2726,metro expansion
+2770,2726,Gpp Project
+2771,2728,Metro Expansion
+2772,2728,gpp
+2773,2729,Gpp
+2774,2729,Skyline Tower
+2775,2730,metro expansion
+2776,2731,GPP project
+2777,2731,metro expansion
+2778,2732,SKYLINE TOWER
+2779,2734,metro expansion
+2780,2734,Skyline Tower
+2781,2735,gpp
+2782,2737,Cloud-Migration
+2783,2737,metro expansion
+2784,2740,metro expansion
+2785,2741,Cloud Migration
+2786,2743,Cloud-Migration
+2787,2744,Cloud Migration
+2788,2744,Skyline Tower
+2789,2745,gpp
+2790,2745,Skyline Tower
+2791,2746,metro expansion
+2792,2746,Gpp
+2793,2748,Cloud Migration
+2794,2749,gpp
+2795,2751,GPP
+2796,2751,skyline tower
+2797,2752,Skyline Tower
+2798,2752,Gpp Project
+2799,2754,Gpp
+2800,2755,Gpp
+2801,2755,Cloud-Migration
+2802,2756,Metro Expansion
+2803,2756,GPP
+2804,2757,cloud migration
+2805,2758,Cloud-Migration
+2806,2758,Gpp Project
+2807,2760,metro expansion
+2808,2760,skyline tower
+2809,2762,Skyline Tower
+2810,2763,cloud migration
+2811,2764,metro expansion
+2812,2765,metro expansion
+2813,2767,skyline tower
+2814,2770,metro expansion
+2815,2770,cloud migration
+2816,2772,gpp
+2817,2772,Cloud-Migration
+2818,2775,Skyline Tower
+2819,2775,Cloud Migration
+2820,2778,GPP project
+2821,2779,METRO EXPANSION
+2822,2779,cloud migration
+2823,2780,gpp
+2824,2780,Cloud-Migration
+2825,2781,Skyline Tower
+2826,2781,cloud migration
+2827,2782,Cloud-Migration
+2828,2782,Metro Expansion
+2829,2784,Skyline Tower
+2830,2785,Cloud-Migration
+2831,2785,Gpp
+2832,2787,Skyline-Tower
+2833,2787,GPP
+2834,2788,skyline tower
+2835,2791,Cloud-Migration
+2836,2791,Skyline Tower
+2837,2792,GPP
+2838,2792,METRO EXPANSION
+2839,2796,Skyline-Tower
+2840,2796,Cloud Migration
+2841,2797,SKYLINE TOWER
+2842,2797,metro expansion
+2843,2798,metro expansion
+2844,2798,GPP project
+2845,2799,METRO EXPANSION
+2846,2802,SKYLINE TOWER
+2847,2802,cloud migration
+2848,2803,Skyline-Tower
+2849,2803,Metro Expansion
+2850,2804,cloud migration
+2851,2804,GPP
+2852,2805,SKYLINE TOWER
+2853,2805,Gpp Project
+2854,2810,METRO EXPANSION
+2855,2812,Metro Expansion
+2856,2813,GPP
+2857,2813,METRO EXPANSION
+2858,2815,Metro Expansion
+2859,2815,Skyline-Tower
+2860,2816,SKYLINE TOWER
+2861,2816,Metro Expansion
+2862,2817,GPP project
+2863,2817,Cloud-Migration
+2864,2818,skyline tower
+2865,2820,Skyline-Tower
+2866,2820,cloud migration
+2867,2822,Gpp
+2868,2823,metro expansion
+2869,2823,cloud migration
+2870,2824,SKYLINE TOWER
+2871,2824,Gpp Project
+2872,2825,METRO EXPANSION
+2873,2830,gpp
+2874,2830,METRO EXPANSION
+2875,2831,metro expansion
+2876,2832,METRO EXPANSION
+2877,2832,skyline tower
+2878,2834,Metro Expansion
+2879,2835,Gpp Project
+2880,2836,Gpp
+2881,2837,Skyline Tower
+2882,2837,GPP project
+2883,2838,METRO EXPANSION
+2884,2839,gpp
+2885,2839,cloud migration
+2886,2840,Skyline Tower
+2887,2840,Metro Expansion
+2888,2844,METRO EXPANSION
+2889,2844,GPP
+2890,2846,Cloud-Migration
+2891,2846,GPP
+2892,2849,Cloud-Migration
+2893,2849,gpp
+2894,2850,metro expansion
+2895,2853,Skyline-Tower
+2896,2855,Gpp Project
+2897,2855,Skyline-Tower
+2898,2856,Skyline Tower
+2899,2856,Gpp
+2900,2858,GPP project
+2901,2859,cloud migration
+2902,2860,skyline tower
+2903,2860,GPP project
+2904,2861,Cloud Migration
+2905,2865,METRO EXPANSION
+2906,2866,Metro Expansion
+2907,2866,Cloud-Migration
+2908,2867,metro expansion
+2909,2867,Skyline-Tower
+2910,2870,SKYLINE TOWER
+2911,2870,METRO EXPANSION
+2912,2872,Metro Expansion
+2913,2872,SKYLINE TOWER
+2914,2873,Metro Expansion
+2915,2874,Cloud Migration
+2916,2875,SKYLINE TOWER
+2917,2876,METRO EXPANSION
+2918,2877,cloud migration
+2919,2878,cloud migration
+2920,2879,metro expansion
+2921,2879,Cloud-Migration
+2922,2880,Cloud-Migration
+2923,2882,Gpp Project
+2924,2883,Metro Expansion
+2925,2884,Cloud-Migration
+2926,2885,cloud migration
+2927,2885,Skyline Tower
+2928,2887,gpp
+2929,2888,Skyline-Tower
+2930,2888,Cloud-Migration
+2931,2889,gpp
+2932,2891,metro expansion
+2933,2892,cloud migration
+2934,2892,Metro Expansion
+2935,2893,GPP project
+2936,2893,Skyline-Tower
+2937,2895,Cloud-Migration
+2938,2895,Gpp
+2939,2896,METRO EXPANSION
+2940,2896,gpp
+2941,2898,Skyline-Tower
+2942,2899,Gpp
+2943,2901,SKYLINE TOWER
+2944,2901,Gpp
+2945,2905,Gpp Project
+2946,2905,Cloud-Migration
+2947,2906,METRO EXPANSION
+2948,2906,Skyline-Tower
+2949,2908,Cloud Migration
+2950,2909,gpp
+2951,2910,Cloud-Migration
+2952,2910,Skyline-Tower
+2953,2911,GPP
+2954,2911,skyline tower
+2955,2912,metro expansion
+2956,2912,skyline tower
+2957,2913,METRO EXPANSION
+2958,2913,Gpp
+2959,2914,METRO EXPANSION
+2960,2915,Gpp Project
+2961,2915,SKYLINE TOWER
+2962,2917,Metro Expansion
+2963,2919,Cloud-Migration
+2964,2919,metro expansion
+2965,2923,Gpp Project
+2966,2923,Cloud Migration
+2967,2924,METRO EXPANSION
+2968,2925,Skyline Tower
+2969,2928,Cloud Migration
+2970,2930,Gpp Project
+2971,2931,gpp
+2972,2931,Cloud-Migration
+2973,2933,METRO EXPANSION
+2974,2934,Gpp Project
+2975,2935,cloud migration
+2976,2935,Metro Expansion
+2977,2937,metro expansion
+2978,2937,cloud migration
+2979,2938,SKYLINE TOWER
+2980,2938,cloud migration
+2981,2939,Metro Expansion
+2982,2939,GPP
+2983,2940,Metro Expansion
+2984,2940,Gpp Project
+2985,2941,Gpp Project
+2986,2943,cloud migration
+2987,2943,Skyline Tower
+2988,2944,Cloud Migration
+2989,2945,Metro Expansion
+2990,2946,Metro Expansion
+2991,2946,SKYLINE TOWER
+2992,2948,Gpp
+2993,2948,metro expansion
+2994,2949,cloud migration
+2995,2951,Cloud-Migration
+2996,2953,Cloud-Migration
+2997,2953,GPP project
+2998,2954,Metro Expansion
+2999,2954,gpp
+3000,2957,Metro Expansion
+3001,2957,cloud migration
+3002,2958,METRO EXPANSION
+3003,2958,SKYLINE TOWER
+3004,2959,Skyline-Tower
+3005,2959,Cloud-Migration
+3006,2961,Cloud-Migration
+3007,2961,Metro Expansion
+3008,2963,gpp
+3009,2964,METRO EXPANSION
+3010,2966,Gpp Project
+3011,2967,Skyline-Tower
+3012,2967,Cloud Migration
+3013,2971,Skyline Tower
+3014,2971,Cloud-Migration
+3015,2974,METRO EXPANSION
+3016,2974,Skyline-Tower
+3017,2975,GPP project
+3018,2975,skyline tower
+3019,2976,metro expansion
+3020,2976,Cloud Migration
+3021,2977,METRO EXPANSION
+3022,2977,cloud migration
+3023,2980,METRO EXPANSION
+3024,2981,METRO EXPANSION
+3025,2981,Cloud Migration
+3026,2983,Cloud-Migration
+3027,2983,metro expansion
+3028,2986,GPP
+3029,2986,Metro Expansion
+3030,2987,Skyline-Tower
+3031,2987,Gpp Project
+3032,2988,skyline tower
+3033,2991,skyline tower
+3034,2992,GPP project
+3035,2994,Cloud Migration
+3036,2994,GPP project
+3037,2995,cloud migration
+3038,2995,Metro Expansion
+3039,2997,Cloud-Migration
+3040,2997,Metro Expansion
+3041,2998,Gpp
+3042,2998,Cloud Migration
+3043,2999,Gpp
+3044,2999,Metro Expansion
