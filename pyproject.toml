@@ -1,7 +1,7 @@
 [project]
 name = "nl2sql-rag-project"
 version = "0.1.0"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "faiss-cpu>=1.15.0",
     "faker>=40.39.0",
@@ -14,5 +14,6 @@ dependencies = [
     "ragas>=0.4.3",
     "rapidfuzz>=3.14.6",
     "sentence-transformers>=6.0.1",
+    "sqlglot>=30.18.0",
     "streamlit>=1.63.0",
 ]

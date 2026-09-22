@@ -21,6 +21,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "config"))
 from config import DATABASE_URL, SQL_DIR, require_database_url
 
+
 import psycopg2
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")

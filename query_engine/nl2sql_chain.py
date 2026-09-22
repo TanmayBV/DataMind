@@ -24,6 +24,7 @@ Run interactively:
 import os
 import re
 import sys
+import time
 
 from dotenv import load_dotenv
 
@@ -36,7 +37,9 @@ import psycopg2
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
-
+from retriever import retrieve_examples, format_examples_for_prompt
+from validators import validate_query
+from validators import validate_query
 
 # ---------------------------------------------------------------
 # Schema description + business rules.
@@ -94,7 +97,7 @@ Business rules (apply these even if not explicitly stated in the question):
    employees_clean.
 """
 
-SYSTEM_PROMPT = f"""You are a SQL generation assistant for a PostgreSQL database.
+SYSTEM_PROMPT_BASE = f"""You are a SQL generation assistant for a PostgreSQL database.
 Given a natural language question, generate ONE valid PostgreSQL SELECT
 query that answers it. Return ONLY the SQL query — no explanation, no
 markdown code fences, no commentary.
@@ -118,13 +121,57 @@ def get_llm():
     )
 
 
-def generate_sql(question: str, llm) -> str:
+def build_system_prompt(question: str, use_few_shot: bool = True) -> str:
+    """
+    Day 4: if use_few_shot is True, retrieve the top-k most similar
+    validated examples from the FAISS index and inject them into the
+    prompt. This is the key difference from Day 3's zero-shot baseline —
+    run evaluate.py (Day 6) to see the measured accuracy difference.
+    """
+    if not use_few_shot:
+        return SYSTEM_PROMPT_BASE
+
+    examples = retrieve_examples(question)
+    examples_block = format_examples_for_prompt(examples)
+    return f"{SYSTEM_PROMPT_BASE}\n{examples_block}"
+
+
+def generate_sql(
+    question: str,
+    llm,
+    use_few_shot: bool = True
+) -> str:
+
+    system_prompt = build_system_prompt(
+        question,
+        use_few_shot=use_few_shot
+    )
+
     messages = [
-        SystemMessage(content=SYSTEM_PROMPT),
+        SystemMessage(content=system_prompt),
         HumanMessage(content=question),
     ]
 
-    response = llm.invoke(messages)
+    max_retries = 3
+
+    for attempt in range(max_retries):
+        try:
+            response = llm.invoke(messages)
+            break
+
+        except Exception as e:
+            if "503" in str(e) or "UNAVAILABLE" in str(e):
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt
+                    print(
+                        f"Gemini temporarily unavailable. "
+                        f"Retrying in {wait_time}s..."
+                    )
+                    time.sleep(wait_time)
+                else:
+                    raise
+            else:
+                raise
 
     content = response.content
 
@@ -151,9 +198,11 @@ def generate_sql(question: str, llm) -> str:
 
 def is_safe_select(sql: str) -> bool:
     """
-    Minimal guard for Day 3 — NOT a substitute for the full validation
-    layer built in Day 5. This just blocks the most obvious footguns:
-    multiple statements, and anything that isn't a SELECT.
+    DEPRECATED as of Day 5 — kept only for reference/comparison against
+    validators.validate_query(), which replaces this with real SQL
+    parsing (schema whitelist + blocked-column checks + proper statement
+    typing) instead of string/regex matching. See docs/DAY5_README.md
+    for why the string-based approach here is insufficient on its own.
     """
     normalized = sql.strip().rstrip(";").upper()
     if not normalized.startswith("SELECT"):
@@ -179,33 +228,46 @@ def run_query(sql: str):
         conn.close()
 
 
-def ask(question: str, llm=None):
-    """Main entry point: question in, (sql, columns, rows) or error out."""
+def ask(question: str, llm=None, use_few_shot: bool = True):
+    """Main entry point: question in, (sql, columns, rows) or error out.
+
+    As of Day 5, generated SQL goes through the full validation layer
+    (validators.validate_query) instead of the old string-based guard —
+    schema whitelist checking and blocked-column detection via real SQL
+    parsing, not substring matching.
+    """
     llm = llm or get_llm()
-    sql = generate_sql(question, llm)
+    sql = generate_sql(question, llm, use_few_shot=use_few_shot)
 
     if sql.startswith("REFUSED"):
         return sql, None, None
 
-    if not is_safe_select(sql):
-        return sql, None, "REJECTED: generated SQL failed the safety check"
+    validation = validate_query(sql)
+    if not validation.is_valid:
+        error_summary = "; ".join(validation.errors)
+        return sql, None, f"REJECTED: {error_summary}"
 
     columns, rows = run_query(sql)
     return sql, columns, rows
 
-
 def main():
-    print("NL2SQL chain (Day 3 baseline) — type a question, or 'exit' to quit.\n")
+    print("NL2SQL chain (Day 5: schema-validated + few-shot) — type a question, or 'exit' to quit.")
+    print("Type 'toggle' to switch between few-shot and zero-shot mode.\n")
     llm = get_llm()
+    use_few_shot = True
     while True:
         question = input("> ").strip()
         if question.lower() in ("exit", "quit"):
             break
+        if question.lower() == "toggle":
+            use_few_shot = not use_few_shot
+            print(f"few-shot mode: {'ON' if use_few_shot else 'OFF'}\n")
+            continue
         if not question:
             continue
 
         try:
-            sql, columns, rows = ask(question, llm=llm)
+            sql, columns, rows = ask(question, llm=llm, use_few_shot=use_few_shot)
         except Exception as e:
             print(f"Error: {e}\n")
             continue
@@ -224,7 +286,5 @@ def main():
                 print(f"  ... and {len(rows) - 20} more rows")
             print()
 
-
 if __name__ == "__main__":
     main()
-
