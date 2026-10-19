@@ -310,15 +310,12 @@ Tested against the curated security suite (`data/adversarial_set.json`):
 
 This project references and builds upon the enterprise data governance, normalization, and AST validation architecture introduced in:
 
-```bibtex
-@article{binvedat2024ragdriven,
-  title={RAG-Driven Data Quality Governance for Enterprise ERP Systems},
-  author={Bin Vedat, Sedat and collaborators},
-  journal={arXiv preprint arXiv:2511.16700},
-  year={2024},
-  url={https://arxiv.org/abs/2511.16700}
-}
-```
+
+##RAG-Driven Data Quality Governance for Enterprise ERP Systems
+Authors:
+Sedat Bin Vedat, Enes Kutay Yarkan, Meftun Akarsu, Recep Kaan Karaman, Arda Sar, Çağrı Çelikbilek, Savaş Saygılı
+[Paper Link](https://huggingface.co/papers/2511.16700)
+
 
 *DataMind is an independent open-source implementation developed to demonstrate enterprise-grade governed NL2SQL, cross-lingual semantic search, and deterministic compile-time query safety.*
 
