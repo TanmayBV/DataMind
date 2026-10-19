@@ -44,9 +44,30 @@ def get_cached_llm():
     return chain.get_llm()
 
 
+@st.cache_resource
 def get_default_connection():
-    """Initializes default engine (Cloud Postgres or local SQLite demo)."""
+    """Initializes and caches default engine (Cloud Postgres or local SQLite demo)."""
     return create_db_engine()
+
+
+@st.cache_resource
+def warmup_retriever():
+    """Pre-warms FAISS embedding model in memory for 0 cold-start latency."""
+    try:
+        from retriever import _load
+        _load()
+    except Exception:
+        pass
+    return True
+
+
+@st.cache_data(show_spinner=False, ttl=1800)
+def get_cached_schema(_engine, engine_repr: str, custom_blocked_tuple: tuple):
+    """
+    Caches schema introspection and 3 sample rows.
+    Avoids 20+ repeated network roundtrips to Supabase/PostgreSQL on every UI interaction.
+    """
+    return introspect_schema(_engine, blocked_columns=list(custom_blocked_tuple))
 
 
 def render_sidebar():
@@ -113,30 +134,6 @@ def render_sidebar():
 
     st.sidebar.divider()
 
-    schema_whitelist = {}
-    schema_prompt = ""
-    tables_meta = []
-
-    if engine is not None:
-        try:
-            schema_whitelist, schema_prompt, tables_meta = introspect_schema(engine)
-        except Exception as e:
-            st.sidebar.error(f"Schema introspection error: {e}")
-
-        with st.sidebar.expander(f"📊 Inspected Schema ({len(tables_meta)} tables)", expanded=False):
-            for t in tables_meta:
-                st.markdown(f"**`{t['name']}`** ({len(t['columns'])} cols, ~{t['row_count'] or 'N/A'} rows)")
-                st.caption(", ".join(t["columns"][:8]) + ("..." if len(t["columns"]) > 8 else ""))
-
-    st.sidebar.subheader("⚙️ Query Controls")
-    use_few_shot = st.sidebar.toggle(
-        "Few-shot semantic retrieval (FAISS)",
-        value=is_default,
-        disabled=not is_default,
-        help="Few-shot examples are trained on the HR ERP schema. Automatically disabled on custom databases.",
-    )
-    show_sql = st.sidebar.toggle("Show generated SQL & AST details", value=True)
-
     with st.sidebar.expander("🛡️ Safety & Policy Rules", expanded=False):
         blocked_input = st.text_input(
             "Sensitive/Blocked Columns (comma-separated):",
@@ -150,6 +147,39 @@ def render_sidebar():
             value="" if not is_default else chain.DEFAULT_BUSINESS_RULES,
             height=120,
         )
+
+    schema_whitelist = {}
+    schema_prompt = ""
+    tables_meta = []
+
+    if engine is not None:
+        try:
+            engine_key = f"{dialect}_{display_name}_{getattr(engine.url, 'database', '')}"
+            schema_whitelist, schema_prompt, tables_meta = get_cached_schema(
+                engine, engine_key, tuple(custom_blocked)
+            )
+        except Exception as e:
+            st.sidebar.error(f"Schema introspection error: {e}")
+
+        with st.sidebar.expander(f"📊 Inspected Schema ({len(tables_meta)} tables)", expanded=False):
+            for t in tables_meta:
+                st.markdown(f"**`{t['name']}`** ({len(t['columns'])} cols, ~{t['row_count'] or 'N/A'} rows)")
+                st.caption(", ".join(t["columns"][:8]) + ("..." if len(t["columns"]) > 8 else ""))
+                if t.get("sample_rows") and t.get("sample_columns"):
+                    sample_df = pd.DataFrame(t["sample_rows"], columns=t["sample_columns"])
+                    st.dataframe(sample_df, hide_index=True)
+            if st.button("🔄 Refresh Schema Cache", use_container_width=True):
+                get_cached_schema.clear()
+                st.rerun()
+
+    st.sidebar.subheader("⚙️ Query Controls")
+    use_few_shot = st.sidebar.toggle(
+        "Few-shot semantic retrieval (FAISS)",
+        value=is_default,
+        disabled=not is_default,
+        help="Few-shot examples are trained on the HR ERP schema. Automatically disabled on custom databases.",
+    )
+    show_sql = st.sidebar.toggle("Show generated SQL & AST details", value=True)
 
     return {
         "engine": engine,
@@ -200,6 +230,7 @@ def render_query_result(sql, columns, rows, show_sql, elapsed):
 
 
 def main():
+    warmup_retriever()
     ctx = render_sidebar()
 
     st.title("🧠 DataMind — NL2SQL Data Governance Engine")

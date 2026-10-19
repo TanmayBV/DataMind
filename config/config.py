@@ -46,6 +46,12 @@ GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 LLM_MODEL = os.environ.get("LLM_MODEL", GROQ_MODEL if LLM_PROVIDER == "groq" else "gemini-3.8-flash")
 
 # --- Retrieval settings (used starting Day 4) ---
+HF_TOKEN = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+if HF_TOKEN:
+    os.environ["HF_TOKEN"] = HF_TOKEN
+    os.environ["HUGGINGFACE_HUB_TOKEN"] = HF_TOKEN
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 FAISS_TOP_K = 5
 

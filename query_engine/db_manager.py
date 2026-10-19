@@ -19,21 +19,39 @@ import os
 import sys
 import sqlite3
 import pandas as pd
-from typing import Dict, Set, Tuple, List, Optional
+from typing import Dict, Set, Tuple, List, Optional, Iterable
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.engine import Engine
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "config"))
-from config import DATA_DIR, DATABASE_URL
+from config import DATA_DIR, DATABASE_URL, BLOCKED_COLUMNS
 
 DEMO_SQLITE_PATH = os.path.join(DATA_DIR, "demo_hr.sqlite")
 
 
 def normalize_db_url(db_url: str) -> str:
-    """SQLAlchemy 2.0 requires 'postgresql://' instead of legacy 'postgres://'."""
+    """
+    SQLAlchemy 2.0 requires 'postgresql://' instead of legacy 'postgres://'.
+    Also auto-cleans common URI input issues:
+    - Strips literal brackets around passwords (e.g. '[YOUR_PASSWORD]')
+    - Auto-encodes literal '@' in passwords when multiple '@' symbols are present.
+    """
     url = (db_url or "").strip()
     if url.startswith("postgres://"):
         url = "postgresql://" + url[len("postgres://"):]
+
+    if "://" in url:
+        scheme, remainder = url.split("://", 1)
+        if "@" in remainder:
+            userinfo, hostinfo = remainder.rsplit("@", 1)
+            if ":" in userinfo:
+                username, password = userinfo.split(":", 1)
+                # Strip accidental brackets from Supabase dashboard template [YOUR-PASSWORD]
+                if password.startswith("[") and password.endswith("]"):
+                    password = password[1:-1]
+                # Encode literal '@' if present in password
+                password = password.replace("@", "%40")
+                url = f"{scheme}://{username}:{password}@{hostinfo}"
     return url
 
 
@@ -130,20 +148,114 @@ def create_db_engine(db_url: Optional[str] = None) -> Tuple[Engine, str, str]:
     return engine, "sqlite", "Local HR ERP (SQLite Demo)"
 
 
-def introspect_schema(engine: Engine) -> Tuple[Dict[str, Set[str]], str, List[dict]]:
+def sanitize_cell_value(val, max_len: int = 35) -> str:
+    """Safely converts any cell value to a clean, truncated string representation."""
+    if val is None:
+        return "NULL"
+    if isinstance(val, (bytes, bytearray, memoryview)):
+        return "<binary>"
+    if isinstance(val, bool):
+        return "true" if val else "false"
+    val_str = str(val).strip().replace("\n", " ").replace("\r", " ").replace("|", "/")
+    if len(val_str) > max_len:
+        return val_str[:max_len - 3] + "..."
+    return val_str
+
+
+def fetch_table_sample_rows(
+    engine: Engine,
+    table_name: str,
+    columns: List[str],
+    blocked_columns: Optional[Set[str]] = None,
+    limit: int = 3,
+    max_preview_cols: int = 10,
+) -> Tuple[List[str], List[List[str]]]:
+    """
+    Fetches up to `limit` sample rows from `table_name` for prompt context.
+    - Excludes blocked/sensitive columns (e.g. salary, ssn, passwords).
+    - Caps preview width to `max_preview_cols` to avoid token bloat.
+    - Dialect-agnostic execution (Postgres, SQLite, MySQL, MSSQL, Oracle).
+    - Robust against permissions errors, unusual identifiers, or empty tables.
+    """
+    blocked = {b.lower() for b in (blocked_columns or set())}
+    safe_cols = [
+        c for c in columns
+        if c.lower() not in blocked and not any(k in c.lower() for k in ("password", "secret", "token", "hash"))
+    ]
+    if not safe_cols:
+        return [], []
+
+    preview_cols = safe_cols[:max_preview_cols]
+    preparer = engine.dialect.identifier_preparer
+    quoted_table = preparer.quote(table_name)
+    quoted_cols = ", ".join(preparer.quote(c) for c in preview_cols)
+    dialect_name = getattr(engine.dialect, "name", "").lower()
+
+    if "mssql" in dialect_name:
+        query_sql = f"SELECT TOP {limit} {quoted_cols} FROM {quoted_table}"
+    elif "oracle" in dialect_name:
+        query_sql = f"SELECT {quoted_cols} FROM {quoted_table} FETCH FIRST {limit} ROWS ONLY"
+    else:
+        query_sql = f"SELECT {quoted_cols} FROM {quoted_table} LIMIT {limit}"
+
+    rows_cleaned = []
+    try:
+        with engine.connect() as conn:
+            res = conn.execute(text(query_sql))
+            raw_rows = res.fetchall()
+            for r in raw_rows:
+                rows_cleaned.append([sanitize_cell_value(v) for v in r])
+    except Exception:
+        # Fallback without quotes if custom engine / view failed with quoted identifiers
+        try:
+            fallback_sql = f"SELECT {', '.join(preview_cols)} FROM {table_name} LIMIT {limit}"
+            with engine.connect() as conn:
+                res = conn.execute(text(fallback_sql))
+                raw_rows = res.fetchall()
+                for r in raw_rows:
+                    rows_cleaned.append([sanitize_cell_value(v) for v in r])
+        except Exception:
+            rows_cleaned = []
+
+    return preview_cols, rows_cleaned
+
+
+def format_sample_rows_for_prompt(table_name: str, cols: List[str], rows: List[List[str]]) -> str:
+    """Formats 3 sample rows as an informative SQL comment block for the LLM."""
+    if not rows or not cols:
+        return ""
+    header = " | ".join(cols)
+    divider = "-|-".join("-" * max(len(c), 3) for c in cols)
+    row_lines = [" | ".join(r) for r in rows]
+    body = "\n".join([header, divider] + row_lines)
+    return (
+        f"/*\n"
+        f"3 sample rows from '{table_name}' (format & value reference only, not exhaustive):\n"
+        f"{body}\n"
+        f"*/"
+    )
+
+
+def introspect_schema(
+    engine: Engine,
+    blocked_columns: Optional[Iterable[str]] = None,
+    sample_limit: int = 3,
+) -> Tuple[Dict[str, Set[str]], str, List[dict]]:
     """
     Reflects the database schema dynamically using SQLAlchemy Inspector.
+    Extracts columns, foreign keys, row counts, and safe sample rows.
     
     Returns:
         schema_whitelist: {table_name: {col1, col2, ...}}
-        schema_prompt: Human-readable DDL-like description for the LLM
-        tables_meta: List of table summaries for UI inspection
+        schema_prompt: Human-readable DDL-like description with sample rows for the LLM
+        tables_meta: List of table summaries for UI inspection (including sample rows)
     """
     inspector = inspect(engine)
     whitelist: Dict[str, Set[str]] = {}
     prompt_lines: List[str] = []
     tables_meta: List[dict] = []
 
+    active_blocked = set(BLOCKED_COLUMNS) if blocked_columns is None else {c.lower() for c in blocked_columns}
     table_names = inspector.get_table_names()
 
     for table_name in table_names:
@@ -175,9 +287,24 @@ def introspect_schema(engine: Engine) -> Tuple[Dict[str, Set[str]], str, List[di
         if fk_strs:
             body += "\n" + "\n".join(fk_strs)
 
-        prompt_lines.append(f"{table_name} (\n{body}\n)")
+        table_block = f"{table_name} (\n{body}\n)"
 
-        # Count sample rows
+        # Fetch safe sample rows (3 rows)
+        sample_cols, sample_rows = fetch_table_sample_rows(
+            engine=engine,
+            table_name=table_name,
+            columns=[c["name"] for c in columns],
+            blocked_columns=active_blocked,
+            limit=sample_limit,
+        )
+
+        sample_prompt_block = format_sample_rows_for_prompt(table_name, sample_cols, sample_rows)
+        if sample_prompt_block:
+            prompt_lines.append(f"{table_block}\n{sample_prompt_block}")
+        else:
+            prompt_lines.append(table_block)
+
+        # Count total rows
         row_count = None
         try:
             with engine.connect() as conn:
@@ -196,9 +323,14 @@ def introspect_schema(engine: Engine) -> Tuple[Dict[str, Set[str]], str, List[di
             "columns": [c["name"] for c in columns],
             "column_types": {c["name"]: str(c.get("type", "TEXT")) for c in columns},
             "row_count": row_count,
+            "sample_columns": sample_cols,
+            "sample_rows": sample_rows,
         })
 
-    schema_prompt = "Tables in Database:\n\n" + "\n\n".join(prompt_lines)
+    schema_prompt = (
+        "Tables in Database (including schema and 3 sample rows for formatting reference):\n\n"
+        + "\n\n".join(prompt_lines)
+    )
     return whitelist, schema_prompt, tables_meta
 
 

@@ -36,10 +36,23 @@ def _load():
         import faiss
         from sentence_transformers import SentenceTransformer
 
-        _model = SentenceTransformer(EMBEDDING_MODEL)
+        # Ultra-fast path: load directly from local disk cache (<0.4s)
+        # Falls back to online with HF_TOKEN if local cache is absent
+        token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+        try:
+            _model = SentenceTransformer(EMBEDDING_MODEL, local_files_only=True)
+        except Exception:
+            _model = SentenceTransformer(EMBEDDING_MODEL, token=token)
+
         _index = faiss.read_index(INDEX_PATH)
         with open(EXAMPLES_PATH) as f:
             _examples = json.load(f)
+
+        # Quick warmup so user's first query has 0 cold-start latency
+        try:
+            _model.encode(["warmup"], normalize_embeddings=True)
+        except Exception:
+            pass
 
 
 def retrieve_examples(question: str, k: int = None):

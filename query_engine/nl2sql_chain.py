@@ -50,24 +50,52 @@ employees_clean (
     employee_status TEXT,       -- EXACT VALUES: 'active' or 'terminated' (strictly lowercase)
     hire_date       DATE
 )
+/*
+3 sample rows from 'employees_clean' (format & value reference only, not exhaustive):
+employee_id | full_name | role | city | department_id | is_payroll | employee_status | hire_date
+1 | Allison Hill | Project Manager | Dubai | 1 | true | active | 2015-05-03
+2 | Noah Rhodes | Accountant | Istanbul | 5 | true | terminated | 2019-09-28
+3 | Angie Henderson | Civil Engineer | New York | 2 | true | terminated | 2016-05-26
+*/
 -- NOTE: employees_clean does NOT include salary or compensation.
 
 departments (
     department_id   INTEGER PRIMARY KEY,
     department_name TEXT        -- Canonical: 'Human Resources', 'Engineering', 'Finance', 'Project Management', 'IT'
 )
+/*
+3 sample rows from 'departments':
+department_id | department_name
+1 | Human Resources
+2 | Engineering
+3 | Finance
+*/
 
 projects (
     project_id   INTEGER PRIMARY KEY,
     project_code TEXT,        -- Canonical: 'GPP', 'Skyline Tower', 'Metro Expansion', 'Cloud Migration'
     project_name TEXT
 )
+/*
+3 sample rows from 'projects':
+project_id | project_code | project_name
+1 | GPP | GPP
+2 | Skyline Tower | Skyline Tower
+3 | Metro Expansion | Metro Expansion
+*/
 
 project_assignments (
     assignment_id INTEGER PRIMARY KEY,
     employee_id   INTEGER REFERENCES employees_clean(employee_id),
     project_id    INTEGER REFERENCES projects(project_id)
 )
+/*
+3 sample rows from 'project_assignments':
+assignment_id | employee_id | project_id
+1 | 1 | 3
+2 | 4 | 1
+3 | 5 | 4
+*/
 
 Exact Canonical Values in Database:
 - employee_status : Strictly 'active' or 'terminated' (lowercase only, NEVER 'Active')
@@ -332,7 +360,7 @@ def ask(
         if dialect is None:
             dialect = getattr(engine.dialect, "name", "postgres")
         if schema_whitelist is None or schema_description is None:
-            introspected_wl, introspected_desc, _ = introspect_schema(engine)
+            introspected_wl, introspected_desc, _ = introspect_schema(engine, blocked_columns=blocked_columns)
             schema_whitelist = schema_whitelist or introspected_wl
             schema_description = schema_description or introspected_desc
             is_default_schema = False
