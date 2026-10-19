@@ -33,55 +33,68 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "config"))
-from config import DATA_DIR, FUZZY_THRESHOLD
+from config import (
+    DATA_DIR, FUZZY_THRESHOLD,
+    CANONICAL_CITIES, CANONICAL_ROLES, CANONICAL_STATUSES,
+    CANONICAL_DEPARTMENTS, CANONICAL_PROJECTS
+)
 
 from rapidfuzz import fuzz, process
 
 # ---------------------------------------------------------------
-# Canonical reference lists. In a real system these come from a
-# business glossary / prior curated data (like the paper's schema
-# documentation); here we hand-curate them once, matching what
-# generate_data.py's variants were built from.
-# ---------------------------------------------------------------
-
-CANONICAL_CITIES = ["Moscow", "Istanbul", "New York", "London", "Berlin", "Dubai"]
-CANONICAL_ROLES = [
-    "Civil Engineer", "HR Analyst", "Project Manager",
-    "Software Engineer", "Accountant", "Data Analyst",
-]
-CANONICAL_STATUSES = ["active", "terminated"]
-
-# ---------------------------------------------------------------
 # Alias tables: exact, curated abbreviation -> canonical mappings.
-# This is the equivalent of the paper's "400+ lines of encoded
-# business logic" — fuzzy string matching alone cannot expand
-# acronyms like "HR" -> "Human Resources" (they share almost no
-# characters), so real pipelines combine a curated alias table
-# (checked first) with fuzzy matching as a fallback for typos/
-# casing/whitespace variants the alias table doesn't cover.
+# English enterprise aliases handling abbreviations and colloquial terms.
 # ---------------------------------------------------------------
 
 CITY_ALIASES = {
-    "nyc": "New York", "new york city": "New York",
+    "nyc": "New York", "new york city": "New York", "n.y.c.": "New York",
     "istambul": "Istanbul",
     "moskva": "Moscow",
-    "dubai, uae": "Dubai",
-    "london, uk": "London",
+    "dubai, uae": "Dubai", "dubai uae": "Dubai",
+    "london, uk": "London", "london uk": "London",
 }
 
 DEPARTMENT_ALIASES = {
     "hr": "Human Resources", "h.r.": "Human Resources",
-    "i̇nsan kaynakları": "Human Resources",  # Turkish source-language entry
-    "eng": "Engineering", "eng.": "Engineering",
-    "fin": "Finance", "fin.": "Finance",
-    "pm": "Project Management", "pmo": "Project Management",
+    "hr dept": "Human Resources", "personnel": "Human Resources", "human res": "Human Resources",
+    "eng": "Engineering", "eng.": "Engineering", "eng dept": "Engineering",
+    "fin": "Finance", "fin.": "Finance", "finance dept": "Finance",
+    "pm": "Project Management", "pmo": "Project Management", "pm lead": "Project Management",
     "it": "IT", "i.t.": "IT", "information technology": "IT",
 }
 
 ROLE_ALIASES = {
     "sw engineer": "Software Engineer",
     "software eng.": "Software Engineer",
+    "software engr": "Software Engineer",
+    "civil eng.": "Civil Engineer",
+    "pm lead": "Project Manager",
 }
+
+# ---------------------------------------------------------------
+# SymSpell Spelling Corrector (Stage 2)
+# Initialized with canonical enterprise domain terms
+# ---------------------------------------------------------------
+_sym_spell = None
+
+
+def get_symspell():
+    global _sym_spell
+    if _sym_spell is None:
+        try:
+            from symspellpy import SymSpell, Verbosity
+            _sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+            # Seed with all canonical words and aliases
+            all_terms = (
+                CANONICAL_CITIES + CANONICAL_ROLES + CANONICAL_STATUSES +
+                list(CITY_ALIASES.values()) + list(DEPARTMENT_ALIASES.values()) +
+                ["Engineering", "Finance", "Human Resources", "Project Management", "IT"]
+            )
+            for term in all_terms:
+                _sym_spell.create_dictionary_entry(term.lower(), 100)
+        except Exception:
+            _sym_spell = False
+    return _sym_spell
 
 
 def normalize_whitespace_case(value: str) -> str:
@@ -91,11 +104,29 @@ def normalize_whitespace_case(value: str) -> str:
     return " ".join(value.strip().split())
 
 
+def correct_spelling(value: str) -> str:
+    """Stage 2: SymSpell spelling correction using domain dictionary."""
+    if not value:
+        return value
+    sym = get_symspell()
+    if not sym:
+        return value
+    try:
+        from symspellpy import Verbosity
+        suggestions = sym.lookup(value.lower(), Verbosity.CLOSEST, max_edit_distance=2)
+        if suggestions:
+            return suggestions[0].term
+    except Exception:
+        pass
+    return value
+
+
 def resolve_value(raw_value: str, canonical_list: list[str], alias_table: dict):
     """
-    Stage 2: entity merging, two passes:
+    Stage 3: entity merging:
       a) exact alias lookup (case-insensitive)      -> handles abbreviations
-      b) fuzzy match against canonical list          -> handles typos/casing
+      b) spell-corrected alias lookup               -> handles typo'd abbreviations
+      c) fuzzy match against canonical list         -> handles phrasing/typos
     Returns (canonical_value_or_None, method, score)
     """
     cleaned = normalize_whitespace_case(raw_value)
@@ -107,12 +138,21 @@ def resolve_value(raw_value: str, canonical_list: list[str], alias_table: dict):
     if alias_hit:
         return alias_hit, "alias", 100
 
-    # Also treat exact (case-insensitive) match to a canonical value as a hit
+    # Also treat exact match to a canonical value as a hit
     for canon in canonical_list:
         if cleaned.lower() == canon.lower():
             return canon, "exact_ci", 100
 
-    # Pass b: fuzzy match against canonical list
+    # Pass b: SymSpell spelling correction check
+    corrected = correct_spelling(cleaned)
+    if corrected != cleaned.lower():
+        if corrected in alias_table:
+            return alias_table[corrected], "symspell_alias", 95
+        for canon in canonical_list:
+            if corrected == canon.lower():
+                return canon, "symspell", 95
+
+    # Pass c: fuzzy match against canonical list
     match = process.extractOne(
         cleaned, canonical_list, scorer=fuzz.token_sort_ratio
     )
@@ -133,24 +173,28 @@ def canonicalize_status(raw_status: str):
 
 
 def load_department_lookup():
-    """Departments are a clean reference table already (Day 1 loaded
-    them as canonical). We fuzzy-match employees_raw.department_raw
-    against these, then resolve to department_id."""
     path = os.path.join(DATA_DIR, "departments.csv")
+    depts = []
+    dept_to_id = {}
     with open(path) as f:
         reader = csv.DictReader(f)
-        depts = [row["department_name"] for row in reader]
-    # id assigned by row order — mirrors SERIAL PRIMARY KEY insert order
-    dept_to_id = {name: i + 1 for i, name in enumerate(depts)}
+        for i, row in enumerate(reader):
+            name = row["department_name"]
+            depts.append(name)
+            dept_to_id[name] = int(row.get("department_id", i + 1))
     return depts, dept_to_id
 
 
 def load_project_lookup():
     path = os.path.join(DATA_DIR, "projects.csv")
+    projects = []
+    project_to_id = {}
     with open(path) as f:
         reader = csv.DictReader(f)
-        projects = [row["project_name"] for row in reader]
-    project_to_id = {name: i + 1 for i, name in enumerate(projects)}
+        for i, row in enumerate(reader):
+            name = row["project_name"]
+            projects.append(name)
+            project_to_id[name] = int(row.get("project_id", i + 1))
     return projects, project_to_id
 
 

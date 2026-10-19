@@ -23,17 +23,37 @@ SQL_DIR = os.path.join(BASE_DIR, "sql")
 # --- Cleaning pipeline settings ---
 FUZZY_THRESHOLD = 85  # rapidfuzz score below this -> flag for manual review
 
-# --- LLM settings (used starting Day 3) ---
+# --- Canonical Domain Dictionary (Single Source of Truth) ---
+# Shared synchronously between Data Cleaning and the NL2SQL Prompt
+CANONICAL_CITIES = ["Moscow", "Istanbul", "New York", "London", "Berlin", "Dubai"]
+CANONICAL_ROLES = [
+    "Civil Engineer", "HR Analyst", "Project Manager",
+    "Software Engineer", "Accountant", "Data Analyst",
+]
+CANONICAL_STATUSES = ["active", "terminated"]
+CANONICAL_DEPARTMENTS = [
+    "Human Resources", "Engineering", "Finance", "Project Management", "IT"
+]
+CANONICAL_PROJECTS = [
+    "GPP", "Skyline Tower", "Metro Expansion", "Cloud Migration"
+]
+
+# --- LLM settings (Multi-provider: Groq / Gemini) ---
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-3.8-flash")
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "groq" if GROQ_API_KEY else "gemini")
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
+LLM_MODEL = os.environ.get("LLM_MODEL", GROQ_MODEL if LLM_PROVIDER == "groq" else "gemini-3.8-flash")
 
 # --- Retrieval settings (used starting Day 4) ---
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 FAISS_TOP_K = 5
 
-# --- Safety settings (used starting Day 5) ---
-BLOCKED_COLUMNS = ["salary"]  # queries referencing these are always rejected
+# --- Safety settings (Paper Section VII: Financial Data & PII Exclusion) ---
+BLOCKED_COLUMNS = [
+    "salary", "bonus", "compensation", "wage", "premium",
+    "adines_number", "national_id", "ssn"
+]  # queries referencing these are always rejected
 
 
 def require_database_url():

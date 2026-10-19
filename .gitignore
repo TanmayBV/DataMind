@@ -73,6 +73,8 @@ data/flagged_records.csv
 faiss_index/
 chroma_db/
 chroma.sqlite3
+*.sqlite
+*.db
 
 # Model weights / checkpoints (if fine-tuning locally, Day 3+)
 *.bin

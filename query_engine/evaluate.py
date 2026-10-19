@@ -58,11 +58,13 @@ RESULTS_PATH = os.path.join(DATA_DIR, "eval_results.json")
 class EvalRow:
     id: str
     question: str
+    expected_sql: str = ""
     category: str = ""
     difficulty: str = ""
     generated_sql: str = ""
     passed_validation: bool = False
     executed_ok: bool = False
+    semantic_correct: bool = False
     error: str = ""
     latency_s: float = 0.0
 
@@ -83,31 +85,68 @@ def load_json(path):
         return json.load(f)
 
 
-def run_query_validity_eval(ask_fn, llm, use_few_shot: bool):
+def check_semantic_accuracy(engine, generated_sql: str, expected_sql: str) -> bool:
+    """
+    Paper Section VI: Semantic Accuracy.
+    Compares the row-level execution results of generated_sql vs expected_sql
+    against the ground-truth database. Order-invariant comparison of returned rows.
+    """
+    if not generated_sql or not expected_sql:
+        return False
+    try:
+        from db_manager import execute_query
+        _, gen_rows = execute_query(engine, generated_sql)
+        _, exp_rows = execute_query(engine, expected_sql)
+        if gen_rows is None or exp_rows is None:
+            return False
+
+        # Sort stringified row tuples to ensure order invariance
+        norm_gen = sorted([tuple(str(v) if v is not None else "" for v in r) for r in gen_rows])
+        norm_exp = sorted([tuple(str(v) if v is not None else "" for v in r) for r in exp_rows])
+        return norm_gen == norm_exp
+    except Exception:
+        return False
+
+
+def run_query_validity_eval(ask_fn, llm, use_few_shot: bool, engine=None):
     """Runs eval_set.json through ask_fn (chain.ask) in the given mode,
-    recording whether each generated query passed validation and
-    executed successfully. This is the "0-shot vs 5-shot" comparison."""
+    recording whether each generated query passed validation, executed successfully,
+    and semantically matched the ground-truth expected query."""
     questions = load_json(EVAL_SET_PATH)
     results = []
 
     for q in questions:
-        row = EvalRow(id=q["id"], question=q["question"],
-                       category=q.get("category", ""), difficulty=q.get("difficulty", ""))
+        row = EvalRow(
+            id=q["id"],
+            question=q["question"],
+            expected_sql=q.get("expected_sql", ""),
+            category=q.get("category", ""),
+            difficulty=q.get("difficulty", "")
+        )
         start = time.time()
         try:
-            sql, columns, rows_or_error = ask_fn(q["question"], llm=llm, use_few_shot=use_few_shot)
+            sql, columns, rows_or_error = ask_fn(
+                q["question"],
+                llm=llm,
+                use_few_shot=use_few_shot,
+                engine=engine
+            )
             row.generated_sql = sql
             row.latency_s = time.time() - start
 
             if sql.startswith("REFUSED"):
                 row.passed_validation = False
-                row.error = "refused by business rules (unexpected on a normal eval question)"
+                row.error = "refused by business rules (unexpected on normal question)"
             elif columns is None and isinstance(rows_or_error, str):
                 row.passed_validation = False
                 row.error = rows_or_error  # validator rejection reason
             else:
                 row.passed_validation = True
                 row.executed_ok = True
+                if engine is not None and row.expected_sql:
+                    row.semantic_correct = check_semantic_accuracy(
+                        engine, row.generated_sql, row.expected_sql
+                    )
         except Exception as e:
             row.latency_s = time.time() - start
             row.error = f"exception: {e}"
@@ -117,7 +156,7 @@ def run_query_validity_eval(ask_fn, llm, use_few_shot: bool):
     return results
 
 
-def run_safety_eval(ask_fn, llm):
+def run_safety_eval(ask_fn, llm, engine=None):
     """Runs adversarial_set.json and checks whether each attack was
     correctly blocked, AND whether legitimate control queries were
     correctly allowed through (false-positive check)."""
@@ -126,7 +165,12 @@ def run_safety_eval(ask_fn, llm):
 
     for c in cases:
         try:
-            sql, columns, rows_or_error = ask_fn(c["question"], llm=llm, use_few_shot=True)
+            sql, columns, rows_or_error = ask_fn(
+                c["question"],
+                llm=llm,
+                use_few_shot=True,
+                engine=engine
+            )
         except Exception as e:
             sql, columns, rows_or_error = "", None, f"exception: {e}"
 
@@ -142,54 +186,47 @@ def run_safety_eval(ask_fn, llm):
     return results
 
 
-def check_semantic_accuracy():
-    """
-    TODO (not implemented — needs a live database):
-    To measure whether generated SQL actually answers the question
-    correctly (not just validly), execute both the generated SQL and
-    the eval set's expected_sql against your loaded Postgres instance
-    and compare the returned rows. A simple approach:
-
-        gen_cols, gen_rows = run_query(generated_sql)
-        exp_cols, exp_rows = run_query(expected_sql)
-        match = sorted(gen_rows) == sorted(exp_rows)
-
-    This requires DATABASE_URL to be set and employees_clean populated
-    (Days 1-2). Left as a clearly-marked next step rather than faked,
-    since fabricating this number would be dishonest.
-    """
-    raise NotImplementedError(
-        "Semantic accuracy checking requires a live database connection. "
-        "See the docstring above for how to implement it once you have one."
-    )
-
-
 def summarize_validity(results, label: str):
     total = len(results)
     passed = sum(r.passed_validation for r in results)
+    semantic_passed = sum(r.semantic_correct for r in results)
     avg_latency = sum(r.latency_s for r in results) / total if total else 0
 
-    print(f"\n=== Query Validity — {label} ===")
-    print(f"Passed validation + executed: {passed}/{total} ({passed/total*100:.1f}%)")
-    print(f"Average latency: {avg_latency:.2f}s")
+    print(f"\n=== Evaluation: {label} ===")
+    print(f"Valid SQL (validation + execution) : {passed}/{total} ({passed/total*100:.1f}%)")
+    print(f"Semantic Accuracy (ground-truth match): {semantic_passed}/{total} ({semantic_passed/total*100:.1f}%)")
+    print(f"Average latency                     : {avg_latency:.2f}s")
 
     by_category = {}
     for r in results:
-        by_category.setdefault(r.category, []).append(r.passed_validation)
-    print("\nBy category:")
+        by_category.setdefault(r.category, []).append((r.passed_validation, r.semantic_correct))
+    print("\nBy category (Valid / Semantic Match):")
     for cat, outcomes in sorted(by_category.items()):
-        rate = sum(outcomes) / len(outcomes) * 100
-        print(f"  {cat:<20} {sum(outcomes)}/{len(outcomes)}  ({rate:.0f}%)")
+        v_rate = sum(o[0] for o in outcomes) / len(outcomes) * 100
+        s_rate = sum(o[1] for o in outcomes) / len(outcomes) * 100
+        print(f"  {cat:<22} Valid: {v_rate:>5.1f}% | Semantic: {s_rate:>5.1f}%")
 
-    failures = [r for r in results if not r.passed_validation]
+    failures = [r for r in results if not r.passed_validation or not r.semantic_correct]
     if failures:
-        print(f"\nFailures ({len(failures)}):")
-        for r in failures:
-            print(f"  [{r.id}] {r.question}")
-            print(f"      -> {r.error}")
+        print(f"\nDiscrepancies / Failures ({len(failures)}):")
+        for r in failures[:5]:
+            status = "VALIDATION_FAILED" if not r.passed_validation else "SEMANTIC_MISMATCH"
+            print(f"  [{r.id}] {status}: {r.question}")
+            if r.error:
+                print(f"      Error: {r.error}")
+            elif not r.semantic_correct:
+                print(f"      Gen SQL: {r.generated_sql}")
+                print(f"      Exp SQL: {r.expected_sql}")
 
-    return {"label": label, "passed": passed, "total": total,
-            "pass_rate": passed / total if total else 0, "avg_latency_s": avg_latency}
+    return {
+        "label": label,
+        "passed": passed,
+        "semantic_passed": semantic_passed,
+        "total": total,
+        "pass_rate": passed / total if total else 0,
+        "semantic_accuracy": semantic_passed / total if total else 0,
+        "avg_latency_s": avg_latency,
+    }
 
 
 def summarize_safety(results):
@@ -202,12 +239,12 @@ def summarize_safety(results):
     attack_block_rate = sum(r.was_blocked for r in attacks) / len(attacks) if attacks else 0
     false_positive_rate = sum(r.was_blocked for r in controls) / len(controls) if controls else 0
 
-    print(f"\n=== Safety Layer Evaluation ===")
-    print(f"Overall correct: {correct}/{total} ({correct/total*100:.1f}%)")
-    print(f"Attack block rate: {sum(r.was_blocked for r in attacks)}/{len(attacks)} "
-          f"({attack_block_rate*100:.1f}%)  <- want this near 100%")
-    print(f"False positive rate on legit queries: {sum(r.was_blocked for r in controls)}/{len(controls)} "
-          f"({false_positive_rate*100:.1f}%)  <- want this near 0%")
+    print(f"\n=== Safety Layer Evaluation (Paper Section VII) ===")
+    print(f"Overall Policy Compliance: {correct}/{total} ({correct/total*100:.1f}%)")
+    print(f"Attack Block Rate        : {sum(r.was_blocked for r in attacks)}/{len(attacks)} "
+          f"({attack_block_rate*100:.1f}%)  <- [Target: 100%]")
+    print(f"False Positive on Legit  : {sum(r.was_blocked for r in controls)}/{len(controls)} "
+          f"({false_positive_rate*100:.1f}%)  <- [Target: 0%]")
 
     misses = [r for r in results if not r.correct]
     if misses:
@@ -218,31 +255,43 @@ def summarize_safety(results):
             print(f"  [{r.id}] {r.attack_type}: {expected}, actually {actual}")
             print(f"      Q: {r.question}")
 
-    return {"total": total, "correct": correct,
-            "attack_block_rate": attack_block_rate,
-            "false_positive_rate": false_positive_rate}
+    return {
+        "total": total,
+        "correct": correct,
+        "attack_block_rate": attack_block_rate,
+        "false_positive_rate": false_positive_rate,
+    }
 
 
 def main():
-    # Imported here (not at module level) so this file can be inspected/
-    # tested without requiring a Groq API key or database connection.
     import nl2sql_chain as chain
 
     llm = chain.get_llm()
+    engine, dialect, display_src = chain.get_default_engine()
+    print(f"Starting Evaluation on {display_src} (Dialect: {dialect})\n")
 
-    zero_shot_results = run_query_validity_eval(chain.ask, llm, use_few_shot=False)
-    few_shot_results = run_query_validity_eval(chain.ask, llm, use_few_shot=True)
-    safety_results = run_safety_eval(chain.ask, llm)
+    zero_shot_results = run_query_validity_eval(chain.ask, llm, use_few_shot=False, engine=engine)
+    few_shot_results = run_query_validity_eval(chain.ask, llm, use_few_shot=True, engine=engine)
+    safety_results = run_safety_eval(chain.ask, llm, engine=engine)
 
-    zero_shot_summary = summarize_validity(zero_shot_results, "0-shot (Day 3 baseline)")
-    few_shot_summary = summarize_validity(few_shot_results, "5-shot (Day 4 retrieval)")
+    zero_shot_summary = summarize_validity(zero_shot_results, "0-Shot Baseline")
+    few_shot_summary = summarize_validity(few_shot_results, "5-Shot Retrieval (RAG)")
     safety_summary = summarize_safety(safety_results)
 
-    print(f"\n=== Headline comparison ===")
-    print(f"0-shot query validity: {zero_shot_summary['pass_rate']*100:.1f}%")
-    print(f"5-shot query validity: {few_shot_summary['pass_rate']*100:.1f}%")
-    delta = (few_shot_summary['pass_rate'] - zero_shot_summary['pass_rate']) * 100
-    print(f"Improvement from few-shot retrieval: {delta:+.1f} points")
+    # Replicate Table II from the research paper
+    valid_delta = (few_shot_summary['pass_rate'] - zero_shot_summary['pass_rate']) * 100
+    semantic_delta = (few_shot_summary['semantic_accuracy'] - zero_shot_summary['semantic_accuracy']) * 100
+    lat_delta = few_shot_summary['avg_latency_s'] - zero_shot_summary['avg_latency_s']
+
+    print("\n" + "="*56)
+    print("Table II: Effect of Few-Shot Learning on NL2SQL")
+    print("="*56)
+    print(f"{'Metric':<26} {'0-Shot':<10} {'5-Shot':<10} {'Diff (+/-)':<10}")
+    print("-"*56)
+    print(f"{'Valid SQL Queries (%)':<26} {zero_shot_summary['pass_rate']*100:<10.1f} {few_shot_summary['pass_rate']*100:<10.1f} {valid_delta:+.1f}%")
+    print(f"{'Semantic Accuracy (%)':<26} {zero_shot_summary['semantic_accuracy']*100:<10.1f} {few_shot_summary['semantic_accuracy']*100:<10.1f} {semantic_delta:+.1f}%")
+    print(f"{'Avg. Latency (s)':<26} {zero_shot_summary['avg_latency_s']:<10.2f} {few_shot_summary['avg_latency_s']:<10.2f} {lat_delta:+.2f}s")
+    print("="*56)
 
     with open(RESULTS_PATH, "w") as f:
         json.dump({
@@ -250,7 +299,7 @@ def main():
             "few_shot": few_shot_summary,
             "safety": safety_summary,
         }, f, indent=2)
-    print(f"\nFull results written to {RESULTS_PATH}")
+    print(f"\nFull benchmark results written to {RESULTS_PATH}")
 
 
 if __name__ == "__main__":

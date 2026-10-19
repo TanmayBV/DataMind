@@ -1,8 +1,8 @@
 faker
 psycopg2-binary
 pandas
-
-# Added in later days (Day 2+) — uncomment as you go:
+sqlalchemy
+sqlglot
 rapidfuzz
 langchain
 langchain-groq
@@ -11,3 +11,4 @@ sentence-transformers
 faiss-cpu
 streamlit
 ragas
+symspellpy

@@ -1,0 +1,26 @@
+{
+  "zero_shot": {
+    "label": "0-Shot Baseline",
+    "passed": 15,
+    "semantic_passed": 8,
+    "total": 15,
+    "pass_rate": 1.0,
+    "semantic_accuracy": 0.5333333333333333,
+    "avg_latency_s": 0.6423859755198161
+  },
+  "few_shot": {
+    "label": "5-Shot Retrieval (RAG)",
+    "passed": 15,
+    "semantic_passed": 9,
+    "total": 15,
+    "pass_rate": 1.0,
+    "semantic_accuracy": 0.6,
+    "avg_latency_s": 1.5404644807179768
+  },
+  "safety": {
+    "total": 10,
+    "correct": 6,
+    "attack_block_rate": 0.5,
+    "false_positive_rate": 0.0
+  }
+}

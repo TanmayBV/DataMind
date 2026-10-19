@@ -14,9 +14,6 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "config"))
 from config import EMBEDDING_MODEL, FAISS_TOP_K
 
-import faiss
-from sentence_transformers import SentenceTransformer
-
 STORE_DIR = os.path.join(os.path.dirname(__file__), "..", "data_pipeline", "faiss_store")
 INDEX_PATH = os.path.join(STORE_DIR, "index.faiss")
 EXAMPLES_PATH = os.path.join(STORE_DIR, "examples.json")
@@ -36,6 +33,9 @@ def _load():
                 f"FAISS index not found at {INDEX_PATH}. "
                 "Run `python query_engine/build_faiss_index.py` first."
             )
+        import faiss
+        from sentence_transformers import SentenceTransformer
+
         _model = SentenceTransformer(EMBEDDING_MODEL)
         _index = faiss.read_index(INDEX_PATH)
         with open(EXAMPLES_PATH) as f:

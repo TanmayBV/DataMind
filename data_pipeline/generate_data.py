@@ -48,20 +48,20 @@ CITY_VARIANTS = {
 }
 
 DEPARTMENT_VARIANTS = {
-    "Human Resources": ["Human Resources", "human resources", "HR", "H.R.", "İnsan Kaynakları"],
-    "Engineering": ["Engineering", "engineering", "ENG", "Eng."],
-    "Finance": ["Finance", "finance", "FIN", "Fin."],
+    "Human Resources": ["Human Resources", "human resources", "HR", "H.R.", "HR Dept", "Personnel"],
+    "Engineering": ["Engineering", "engineering", "ENG", "Eng.", "Eng Dept"],
+    "Finance": ["Finance", "finance", "FIN", "Fin.", "Finance Dept"],
     "Project Management": ["Project Management", "project management", "PM", "PMO"],
     "IT": ["IT", "it", "I.T.", "Information Technology"],
 }
 
 ROLE_VARIANTS = {
-    "Civil Engineer": ["civil engineer", "Civil Engineer", "CIVIL ENGINEER", "civil Engineer"],
-    "HR Analyst": ["hr analyst", "HR Analyst", "HR ANALYST", "Hr Analyst"],
-    "Project Manager": ["project manager", "Project Manager", "PROJECT MANAGER"],
-    "Software Engineer": ["software engineer", "Software Engineer", "SW Engineer", "Software eng."],
-    "Accountant": ["accountant", "Accountant", "ACCOUNTANT"],
-    "Data Analyst": ["data analyst", "Data Analyst", "DATA ANALYST", "data Analyst"],
+    "Civil Engineer": ["civil engineer", "Civil Engineer", "CIVIL ENGINEER", "civil Engineer", "Civil Eng."],
+    "HR Analyst": ["hr analyst", "HR Analyst", "HR ANALYST", "Hr Analyst", "HR Analyst "],
+    "Project Manager": ["project manager", "Project Manager", "PROJECT MANAGER", "PM Lead"],
+    "Software Engineer": ["software engineer", "Software Engineer", "SW Engineer", "Software eng.", "Software Engr"],
+    "Accountant": ["accountant", "Accountant", "ACCOUNTANT", "accountant "],
+    "Data Analyst": ["data analyst", "Data Analyst", "DATA ANALYST", "data Analyst", "Data Analyst "],
 }
 
 PROJECT_VARIANTS = {
@@ -76,7 +76,7 @@ STATUS_VARIANTS = {
     "terminated": ["terminated", "Terminated", "TERMINATED"],
 }
 
-LANGUAGES = ["en", "ru", "tr"]
+LANGUAGES = ["en"]
 
 ROLE_SALARY_RANGE = {
     "Civil Engineer": (55000, 95000),
@@ -186,11 +186,11 @@ def main():
     )
 
     # Reference tables (clean, small)
-    departments = [{"department_name": d} for d in DEPARTMENT_VARIANTS.keys()]
-    write_csv(os.path.join(OUT_DIR, "departments.csv"), departments, ["department_name"])
+    departments = [{"department_id": i + 1, "department_name": d} for i, d in enumerate(DEPARTMENT_VARIANTS.keys())]
+    write_csv(os.path.join(OUT_DIR, "departments.csv"), departments, ["department_id", "department_name"])
 
-    projects = [{"project_code": p, "project_name": p} for p in PROJECT_VARIANTS.keys()]
-    write_csv(os.path.join(OUT_DIR, "projects.csv"), projects, ["project_code", "project_name"])
+    projects = [{"project_id": i + 1, "project_code": p, "project_name": p} for i, p in enumerate(PROJECT_VARIANTS.keys())]
+    write_csv(os.path.join(OUT_DIR, "projects.csv"), projects, ["project_id", "project_code", "project_name"])
 
     print("\nDay 1 dataset generation complete.")
     print("Next: load these CSVs into a free Postgres instance (Supabase/Neon)")
