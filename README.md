@@ -306,19 +306,6 @@ Tested against the curated security suite (`data/adversarial_set.json`):
 
 ---
 
-## ☁️ Cloud Deployment Guide
-
-DataMind is optimized for deployment on Render, Streamlit Community Cloud, or Docker containers:
-
-### Deploy to Render
-The repository includes a ready-to-deploy [`render.yaml`](file:///d:/nl2sql-rag-project/render.yaml):
-1. Connect your GitHub repository to [Render](https://render.com).
-2. Create a new **Blueprint** and select this repository.
-3. Configure your `GROQ_API_KEY` or `GEMINI_API_KEY` in the Render dashboard environment variables.
-4. Render will automatically build the environment and launch Streamlit on the allocated port.
-
----
-
 ## 📚 References & Acknowledgments
 
 This project references and builds upon the enterprise data governance, normalization, and AST validation architecture introduced in:
