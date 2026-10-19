@@ -1,10 +1,7 @@
 """
 config.py
 ---------
-Centralized configuration. Every script in scripts/ should import
-settings from here instead of reading environment variables directly —
-keeps connection/config logic in one place as the project grows
-(Day 3+ will add LLM_API_KEY, EMBEDDING_MODEL, etc. here too).
+Centralized application configuration and environment settings.
 """
 
 import os
@@ -45,17 +42,17 @@ LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "groq" if GROQ_API_KEY else "gemin
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 LLM_MODEL = os.environ.get("LLM_MODEL", GROQ_MODEL if LLM_PROVIDER == "groq" else "gemini-3.8-flash")
 
-# --- Retrieval settings (used starting Day 4) ---
+# --- Retrieval settings ---
 HF_TOKEN = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
 if HF_TOKEN:
     os.environ["HF_TOKEN"] = HF_TOKEN
     os.environ["HUGGINGFACE_HUB_TOKEN"] = HF_TOKEN
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-FAISS_TOP_K = 5
+EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "paraphrase-multilingual-MiniLM-L12-v2")
+FAISS_TOP_K = int(os.environ.get("FAISS_TOP_K", "5"))
 
-# --- Safety settings (Paper Section VII: Financial Data & PII Exclusion) ---
+# --- Safety settings: Financial Data & PII Exclusion ---
 BLOCKED_COLUMNS = [
     "salary", "bonus", "compensation", "wage", "premium",
     "adines_number", "national_id", "ssn"

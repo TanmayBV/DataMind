@@ -235,8 +235,9 @@ def main():
 
     st.title("🧠 DataMind — NL2SQL Data Governance Engine")
     st.caption(
-        "A scaled-down replication of 'RAG-Driven Data Quality Governance for Enterprise ERP Systems' (arXiv:2511.16700). "
-        "Features automated schema introspection, FAISS few-shot RAG, and AST safety verification at $0 cost."
+        "Intelligent NL2SQL query engine with dynamic schema reflection, multilingual support, "
+        "FAISS semantic retrieval, and SQLGlot AST safety validation. "
+        "*(Architecture inspired by research paper: 'RAG-Driven Data Quality Governance for Enterprise ERP Systems', arXiv:2511.16700)*"
     )
 
     if ctx["engine"] is not None:
@@ -249,9 +250,8 @@ def main():
         st.warning("⚠️ Please select or connect a database from the sidebar to start asking questions.")
         st.stop()
 
-    tab_chat, tab_benchmarks, tab_audit = st.tabs([
+    tab_chat, tab_audit = st.tabs([
         "💬 Query Assistant",
-        "📊 Paper Benchmarks",
         "📋 Query Audit & Lifecycle Logs"
     ])
 
@@ -261,14 +261,14 @@ def main():
             cols = st.columns(4)
             sample_q1 = "How many active civil engineers are there?"
             sample_q2 = "Who is working on the GPP project?"
-            sample_q3 = "How many contractors work in London?"
+            sample_q3 = "¿Cuántos empleados activos trabajan en Dubái?"
             sample_q4 = "What is the average salary of employees?"
 
             if cols[0].button("👷 Active Engineers", use_container_width=True):
                 st.session_state.pending_question = sample_q1
             if cols[1].button("📂 GPP Project Staff", use_container_width=True):
                 st.session_state.pending_question = sample_q2
-            if cols[2].button("🏙️ London Contractors", use_container_width=True):
+            if cols[2].button("🌐 Spanish: Dubái", use_container_width=True):
                 st.session_state.pending_question = sample_q3
             if cols[3].button("🛡️ Test Blocked Salary", use_container_width=True):
                 st.session_state.pending_question = sample_q4
@@ -286,7 +286,7 @@ def main():
             st.session_state.history = []
 
         pending_q = st.session_state.pop("pending_question", None)
-        question = st.chat_input("Ask a question about your database in plain English...") or pending_q
+        question = st.chat_input("Ask a question about your database in any language (English, Spanish, Hindi, French, German, etc.)...") or pending_q
 
         if question:
             with st.spinner(f"Generating and validating {ctx['dialect'].upper()} SQL..."):
@@ -332,68 +332,9 @@ def main():
         if not st.session_state.history:
             st.info("👋 Ask a question above or choose a sample question to see the engine in action.")
 
-    with tab_benchmarks:
-        st.subheader("📊 Research Paper Results Replication")
-        st.markdown(
-            "Empirical results replicating **Table I (Record Normalization)** and **Table II (Few-Shot Performance)** "
-            "from *'RAG-Driven Data Quality Governance for Enterprise ERP Systems'*."
-        )
-
-        # Table I: Data Cleaning Transformations
-        st.markdown("#### Table I: Examples of Record Normalization (Data Cleaning Pipeline)")
-        before_after_path = os.path.join(DATA_DIR, "before_after_examples.csv")
-        if os.path.exists(before_after_path):
-            df_norm = pd.read_csv(before_after_path)
-            try:
-                st.dataframe(df_norm, width="stretch")
-            except TypeError:
-                st.dataframe(df_norm)
-        else:
-            st.info("Run `python data_pipeline/clean_data.py` to generate Table I samples.")
-
-        # Table II: Evaluation Results
-        st.markdown("#### Table II: Effect of Few-Shot Learning on SQL Performance")
-        eval_results_path = os.path.join(DATA_DIR, "eval_results.json")
-        if os.path.exists(eval_results_path):
-            with open(eval_results_path) as f:
-                res = json.load(f)
-            z = res.get("zero_shot", {})
-            f_shot = res.get("few_shot", {})
-            saf = res.get("safety", {})
-
-            t2_data = [
-                {
-                    "Metric": "Valid SQL Queries (%)",
-                    "0-Shot Baseline": f"{z.get('pass_rate', 0)*100:.1f}%",
-                    "5-Shot Retrieval": f"{f_shot.get('pass_rate', 0)*100:.1f}%",
-                    "Improvement (Diff)": f"{(f_shot.get('pass_rate', 0) - z.get('pass_rate', 0))*100:+.1f}%",
-                },
-                {
-                    "Metric": "Semantic Accuracy (%)",
-                    "0-Shot Baseline": f"{z.get('semantic_accuracy', 0)*100:.1f}%",
-                    "5-Shot Retrieval": f"{f_shot.get('semantic_accuracy', 0)*100:.1f}%",
-                    "Improvement (Diff)": f"{(f_shot.get('semantic_accuracy', 0) - z.get('semantic_accuracy', 0))*100:+.1f}%",
-                },
-                {
-                    "Metric": "Avg. Latency (s)",
-                    "0-Shot Baseline": f"{z.get('avg_latency_s', 0):.2f}s",
-                    "5-Shot Retrieval": f"{f_shot.get('avg_latency_s', 0):.2f}s",
-                    "Improvement (Diff)": f"{f_shot.get('avg_latency_s', 0) - z.get('avg_latency_s', 0):+.2f}s",
-                },
-            ]
-            st.table(pd.DataFrame(t2_data))
-
-            st.markdown("#### 🛡️ Safety & Policy Enforcement Metrics (Section VII)")
-            col_s1, col_s2, col_s3 = st.columns(3)
-            col_s1.metric("Attack Block Rate", f"{saf.get('attack_block_rate', 0)*100:.1f}%", help="Goal: 100%")
-            col_s2.metric("False Positive Rate", f"{saf.get('false_positive_rate', 0)*100:.1f}%", help="Goal: 0%")
-            col_s3.metric("Overall Safety Compliance", f"{saf.get('correct', 0)}/{saf.get('total', 1)} ({saf.get('correct', 0)/max(saf.get('total', 1), 1)*100:.1f}%)")
-        else:
-            st.info("Run `python query_engine/evaluate.py` to compute and display live Table II benchmark results.")
-
     with tab_audit:
         st.subheader("📋 Query Audit Trail & Lifecycle Telemetry")
-        st.caption("Replicates Algorithm 1 Phase 7: Persistent query execution audit logs with stage-by-stage latency tracking.")
+        st.caption("Persistent query execution audit logs with fine-grained latency tracking and AST validation status.")
 
         audit_logs = get_recent_audit_logs(limit=50)
         if audit_logs:

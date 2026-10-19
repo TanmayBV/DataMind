@@ -1,9 +1,9 @@
 """
 build_faiss_index.py
 ---------------------
-Day 4: embeds the curated few-shot examples (data/few_shot_examples.jsonl)
-using a local sentence-transformers model and builds a FAISS index for
-fast similarity search at query time.
+Embeds the curated few-shot examples (data/few_shot_examples.jsonl)
+using sentence-transformers and builds a FAISS index for
+fast semantic similarity search at query time.
 
 Run once (or whenever you add/edit examples):
     python query_engine/build_faiss_index.py

@@ -1,31 +1,22 @@
 """
 clean_data.py
 -------------
-Day 2: the data cleaning pipeline.
+Data cleaning & entity normalization pipeline.
 
-Mirrors the paper's four-stage approach (translation/normalization,
-spelling correction, entity merging, validation) — scaled down to
-what's realistic for a solo free-tier project:
-
+Four-stage pipeline:
   1. Normalization   — trim whitespace, collapse casing
-  2. Entity merging   — fuzzy-match each raw value against a curated
-                         canonical reference list (rapidfuzz), mirroring
-                         "ODTU"/"METU"/"Middle East Technical University"
-                         style consolidation from the paper
+  2. Entity merging   — fuzzy-match each raw value against canonical reference lists (rapidfuzz)
   3. FK resolution    — map cleaned department name -> department_id
-  4. Validation       — flag rows that fail business rules instead of
-                         silently dropping/guessing (status not in
-                         {active, terminated}, missing city, etc.)
+  4. Validation       — flag rows that fail business rules instead of silently dropping
 
-Reads from data/employees_raw.csv (+ departments.csv, project_assignments_raw.csv,
-projects.csv) and writes:
+Reads from data/employees_raw.csv (+ departments.csv, project_assignments_raw.csv, projects.csv) and writes:
     data/employees_clean.csv
     data/project_assignments_clean.csv
     data/flagged_records.csv          -> rows that failed validation
-    data/before_after_examples.csv    -> sample transformations for your README
+    data/before_after_examples.csv    -> sample transformations for audit
 
 Run:
-    python scripts/clean_data.py
+    python data_pipeline/clean_data.py
 """
 
 import csv

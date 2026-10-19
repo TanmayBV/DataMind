@@ -1,17 +1,12 @@
 """
 generate_data.py
 -----------------
-Generates a synthetic, intentionally MESSY HR dataset for the
-NL2SQL RAG project (Day 1 of the build plan).
-
-Produces CSVs in /data that mirror the kind of real-world
-inconsistencies described in the reference paper: mixed casing,
-city-name variants, department name variants, and duplicate
-project-code spellings across "languages" (simulated, not real
-translation — just realistic string variation).
+Generates a synthetic, intentionally messy enterprise HR dataset.
+Produces raw CSVs in data/ with realistic real-world inconsistencies:
+mixed casing, abbreviations, city name variants, and noisy entry formats.
 
 Run:
-    python scripts/generate_data.py --n_employees 3000
+    python data_pipeline/generate_data.py --n_employees 3000
 """
 
 import argparse

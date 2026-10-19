@@ -106,20 +106,25 @@ Exact Canonical Values in Database:
 """
 
 DEFAULT_BUSINESS_RULES = """
-Business Rules & Casing Standards (Paper Section V-B):
+Business Rules, Casing Standards & Multilingual Guidelines:
 1. "Active employees" or "current staff" means employee_status = 'active' (strictly lowercase 'active').
 2. Unless the question explicitly asks about contractors, assume is_payroll = true (exclude contractors from general staff counts).
-3. Text Casing Rule: Always use the exact canonical values and casing shown above (e.g. employee_status = 'active', role = 'Civil Engineer') OR use LOWER(column) = LOWER('...') to guarantee case-insensitive matching.
-4. NEVER generate a query that references salary, bonus, compensation, wage, or national_id. If asked, respond with exactly: REFUSED: sensitive financial data
-5. Only generate SELECT statements. Never generate INSERT, UPDATE, DELETE, DROP, ALTER, or data-modifying queries.
-6. Always JOIN through department_id / project_id — never guess that department or project name exists as a column on employees_clean.
+3. Text Casing & Canonical Mapping Rule: Always use the exact canonical values and casing shown above (e.g. employee_status = 'active', role = 'Civil Engineer') OR use LOWER(column) = LOWER('...') to guarantee case-insensitive matching.
+4. Multilingual Translation & Intent:
+   - The user may ask questions in ANY language (e.g., Spanish, French, German, Hindi, Chinese, Russian, Japanese, Arabic, etc.).
+   - ALWAYS interpret the user's intent in their input language, but ALWAYS produce executable SQL strictly referencing the English table/column names and canonical database values.
+   - Automatically translate foreign names/terms to their database canonical equivalents (e.g. "Moscú"/"Moscou"/"Москва" -> 'Moscow', "ingénieur civil" -> 'Civil Engineer', "aktive" -> 'active').
+5. NEVER generate a query that references salary, bonus, compensation, wage, or national_id. If asked (in any language), respond with exactly: REFUSED: sensitive financial data
+6. Only generate SELECT statements. Never generate INSERT, UPDATE, DELETE, DROP, ALTER, or data-modifying queries.
+7. Always JOIN through department_id / project_id — never guess that department or project name exists as a column on employees_clean.
 """
 
 GENERIC_BUSINESS_RULES = """
 Rules:
 1. Only generate valid SELECT statements. Never generate INSERT, UPDATE, DELETE, DROP, ALTER, or data-modifying queries.
 2. Return ONLY the executable SQL query — no markdown code fences, no explanations.
-3. If the question asks for sensitive or restricted data, respond with: REFUSED: sensitive data requested
+3. Multilingual Support: If the question is asked in any language other than English, interpret the question accurately and generate the SQL query matching the database's schema, column names, and values in English.
+4. If the question asks for sensitive or restricted data, respond with: REFUSED: sensitive data requested
 """
 
 _default_engine_info = None
@@ -190,7 +195,7 @@ def build_system_prompt(
 
     prompt = (
         f"You are an expert SQL generation assistant for a {dialect_clean} database.\n"
-        f"Given a natural language question, generate ONE valid {dialect_clean} SELECT\n"
+        f"Given a natural language question in ANY language, generate ONE valid {dialect_clean} SELECT\n"
         f"query that answers it. Return ONLY the SQL query — no explanation, no\n"
         f"markdown code fences, no commentary.\n\n"
         f"{schema_text}\n\n"

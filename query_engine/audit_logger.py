@@ -2,9 +2,8 @@
 audit_logger.py
 ---------------
 Lifecycle state tracking and persistent query audit logging layer.
-Replicates Algorithm 1 (Phase 7) and Section III-B.4 from the paper:
 Tracks query lifecycle states (loading -> retrieving -> generating -> validating -> executing -> ready/rejected),
-recording fine-grained latency per stage for transparency and auditability at $0 cost.
+recording fine-grained latency per stage for transparency and operational auditability.
 """
 
 import os

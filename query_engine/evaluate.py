@@ -1,42 +1,13 @@
 """
 evaluate.py
 -----------
-Day 6: evaluation harness. Turns everything built in Days 3-5 into
-concrete, measurable numbers — this is what produces your resume's
-headline metrics, not just claims.
-
-Three measurements:
-
-  1. Query validity, 0-shot vs 5-shot (data/eval_set.json)
-     -- reuses the few-shot toggle built in Day 4 to produce a direct
-        before/after comparison, same shape as the reference paper's
-        Table II (0-Shot vs 5-Shot query validity)
-
-  2. Safety layer effectiveness (data/adversarial_set.json)
-     -- measures block rate on attack attempts (should all be blocked)
-        AND false-positive rate on legitimate control queries (should
-        NOT be blocked) — both numbers matter; a safety layer that
-        blocks everything isn't useful, it just LOOKS safe
-
-  3. Per-category breakdown (simple filters vs joins vs subqueries)
-     -- shows WHERE the system is strong/weak, which is a more honest
-        and more interesting story than a single aggregate accuracy
-        number
-
-IMPORTANT — read this before running against a real LLM:
-"Query validity" here means the generated SQL passes validators.py
-(parses, correct statement type, schema-compliant, no blocked columns)
-AND executes without a database error. It does NOT mean the RESULT is
-semantically correct (i.e. actually answers the question correctly) —
-verifying that would require either a human check against expected_sql,
-or running both the generated and expected_sql against a live database
-and comparing row-for-row output. This harness measures and reports
-validity/safety, and leaves a clear TODO + instructions for you to add
-semantic accuracy checking once you have a live database to test against
-(see check_semantic_accuracy() below).
+Evaluation harness measuring:
+  1. Query validity across 0-shot and few-shot modes (data/eval_set.json)
+  2. Safety layer effectiveness & adversarial defense (data/adversarial_set.json)
+  3. Per-category query accuracy breakdown (simple filters, joins, subqueries)
 
 Run:
-    python evaluation/evaluate.py
+    python query_engine/evaluate.py
 """
 
 import json

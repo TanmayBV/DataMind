@@ -1,6 +1,5 @@
 -- ============================================================
--- Synthetic HR ERP Schema (mirrors the multi-table, messy-field
--- structure described in the RAG-driven data governance paper)
+-- Enterprise HR Schema (raw decentralized entry + clean views)
 -- ============================================================
 
 DROP TABLE IF EXISTS project_assignments CASCADE;

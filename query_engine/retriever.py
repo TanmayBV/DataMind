@@ -1,10 +1,9 @@
 """
 retriever.py
 ------------
-Day 4: loads the FAISS index built by build_faiss_index.py and retrieves
+Loads the FAISS index built by build_faiss_index.py and retrieves
 the top-k most similar few-shot examples for a given natural-language
-question. Used by nl2sql_chain.py to build a few-shot prompt instead of
-the zero-shot prompt from Day 3.
+question across multiple languages.
 """
 
 import json

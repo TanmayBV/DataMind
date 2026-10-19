@@ -11,7 +11,7 @@ Setup:
     3. Set it as an environment variable:
            export DATABASE_URL="postgresql://...your connection string..."
     4. Run:
-           python scripts/load_to_postgres.py
+           python data_pipeline/load_to_postgres.py
 """
 
 import csv
