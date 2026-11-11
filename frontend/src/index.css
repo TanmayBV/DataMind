@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Strict Typography Scale (UI-SPEC Section 3) */
+  --text-xs: 12px;
+  --text-xs--line-height: 1.5;
+  --text-xs--letter-spacing: 0.01em;
+
+  --text-sm: 14px;
+  --text-sm--line-height: 1.5;
+  --text-sm--letter-spacing: normal;
+
+  --text-lg: 18px;
+  --text-lg--line-height: 1.2;
+  --text-lg--letter-spacing: -0.01em;
+
+  --text-2xl: 24px;
+  --text-2xl--line-height: 1.2;
+  --text-2xl--letter-spacing: -0.02em;
+
+  /* Strict 8-Point Spacing Grid (UI-SPEC Section 2) */
+  --spacing-space-1: 4px;
+  --spacing-space-2: 8px;
+  --spacing-space-4: 16px;
+  --spacing-space-6: 24px;
+  --spacing-space-8: 32px;
+  --spacing-space-12: 48px;
+  --spacing-space-16: 64px;
+
+  /* 60/30/10 Color Tokens (UI-SPEC Section 4) */
+  --color-app: var(--color-bg-app);
+  --color-canvas: var(--color-bg-canvas);
+  --color-card: var(--color-bg-card);
+  --color-sidebar: var(--color-bg-sidebar);
+  --color-input: var(--color-bg-input);
+
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-prominent: var(--color-border-prominent);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-accent-primary: var(--color-accent-primary);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-subtle: var(--color-accent-subtle);
+
+  --color-status-success: var(--color-status-success);
+  --color-status-success-bg: var(--color-status-success-bg);
+  --color-status-error: var(--color-status-error);
+  --color-status-error-bg: var(--color-status-error-bg);
+  --color-status-warning: var(--color-status-warning);
+  --color-status-warning-bg: var(--color-status-warning-bg);
+  --color-status-info: var(--color-status-info);
+
+  --color-destructive: var(--color-destructive);
+  --color-destructive-hover: var(--color-destructive-hover);
+  --color-destructive-bg: var(--color-destructive-bg);
+}
+
+:root {
+  --color-bg-app: #F8FAFC;
+  --color-bg-canvas: #F1F5F9;
+  --color-bg-card: #FFFFFF;
+  --color-bg-sidebar: #FFFFFF;
+  --color-bg-input: #F8FAFC;
+  --color-border-subtle: #E2E8F0;
+  --color-border-prominent: #CBD5E1;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-accent-primary: #2563EB;
+  --color-accent-hover: #1D4ED8;
+  --color-accent-subtle: rgba(37, 99, 235, 0.08);
+  --color-status-success: #059669;
+  --color-status-success-bg: rgba(5, 150, 105, 0.10);
+  --color-status-error: #DC2626;
+  --color-status-error-bg: rgba(220, 38, 38, 0.10);
+  --color-status-warning: #D97706;
+  --color-status-warning-bg: rgba(217, 119, 6, 0.10);
+  --color-status-info: #0284C7;
+  --color-destructive: #DC2626;
+  --color-destructive-hover: #B91C1C;
+  --color-destructive-bg: rgba(220, 38, 38, 0.10);
+}
+
+.dark {
+  --color-bg-app: #0B0F19;
+  --color-bg-canvas: #0E1424;
+  --color-bg-card: #131B2E;
+  --color-bg-sidebar: #0F172A;
+  --color-bg-input: #1E293B;
+  --color-border-subtle: #1E293B;
+  --color-border-prominent: #334155;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-accent-primary: #3B82F6;
+  --color-accent-hover: #2563EB;
+  --color-accent-subtle: rgba(59, 130, 246, 0.12);
+  --color-status-success: #10B981;
+  --color-status-success-bg: rgba(16, 185, 129, 0.12);
+  --color-status-error: #EF4444;
+  --color-status-error-bg: rgba(239, 68, 68, 0.12);
+  --color-status-warning: #F59E0B;
+  --color-status-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-status-info: #38BDF8;
+  --color-destructive: #EF4444;
+  --color-destructive-hover: #DC2626;
+  --color-destructive-bg: rgba(239, 68, 68, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg-app);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
