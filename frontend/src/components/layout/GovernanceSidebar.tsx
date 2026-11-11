@@ -10,12 +10,21 @@ import {
   Code2,
   CheckCircle2,
   AlertCircle,
+  X,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { Button, Input, Badge } from '../ui/Primitives';
 import { PolicyModal } from '../modals/Modals';
 
-export const GovernanceSidebar: React.FC = () => {
+interface GovernanceSidebarProps {
+  isOpenMobile?: boolean;
+  onCloseMobile?: () => void;
+}
+
+export const GovernanceSidebar: React.FC<GovernanceSidebarProps> = ({
+  isOpenMobile = false,
+  onCloseMobile,
+}) => {
   const {
     connection,
     connectDemo,
@@ -86,10 +95,42 @@ export const GovernanceSidebar: React.FC = () => {
   };
 
   return (
-    <aside className="w-80 min-w-[320px] max-w-[320px] h-[calc(100vh-3.5rem)] bg-sidebar border-r border-border-subtle p-space-4 flex flex-col justify-between overflow-y-auto select-none transition-colors">
-      <div className="space-y-space-6">
-        {/* Section 1: Database Switcher */}
-        <div>
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {isOpenMobile && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 md:hidden transition-opacity"
+          onClick={onCloseMobile}
+          aria-hidden="true"
+        />
+      )}
+
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-50 w-[300px] sm:w-80 bg-sidebar border-r border-border-subtle p-space-4 flex flex-col justify-between overflow-y-auto select-none transition-transform duration-200 ease-in-out
+          md:static md:translate-x-0 md:h-[calc(100vh-3.5rem)] md:z-0 md:w-80 md:min-w-[320px] md:max-w-[320px]
+          ${isOpenMobile ? 'translate-x-0 shadow-2xl' : '-translate-x-full md:translate-x-0'}
+        `}
+      >
+        <div className="space-y-space-6">
+          {/* Mobile Header with Close Button */}
+          <div className="flex items-center justify-between md:hidden pb-space-3 border-b border-border-subtle">
+            <div className="flex items-center gap-2">
+              <Database className="w-4 h-4 text-accent-primary" />
+              <span className="text-sm font-semibold text-primary">Database Connection</span>
+            </div>
+            <button
+              type="button"
+              onClick={onCloseMobile}
+              className="p-1.5 text-secondary hover:text-primary rounded-lg transition-colors cursor-pointer"
+              aria-label="Close sidebar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Section 1: Database Switcher */}
+          <div>
           <div className="flex items-center gap-2 mb-space-2 text-xs font-semibold text-secondary uppercase tracking-wider">
             <Database className="w-4 h-4 text-accent-primary" />
             <span>Database Connection</span>
@@ -315,5 +356,6 @@ export const GovernanceSidebar: React.FC = () => {
         onOpenChange={setIsPolicyModalOpen}
       />
     </aside>
+  </>
   );
 };

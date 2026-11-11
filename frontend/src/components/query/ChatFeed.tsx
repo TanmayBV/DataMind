@@ -74,7 +74,7 @@ export const ChatFeed: React.FC<ChatFeedProps> = ({
   }
 
   return (
-    <div className="flex-1 overflow-y-auto p-space-4 space-y-space-6 max-w-5xl mx-auto w-full">
+    <div className="flex-1 overflow-y-auto p-space-3 sm:p-space-4 space-y-space-4 sm:space-y-space-6 max-w-5xl mx-auto w-full">
       {/* Sample Prompts Row at the Top */}
       <div className="pt-2 pb-space-2 border-b border-border-subtle">
         <SamplePrompts onSelectPrompt={onSelectPrompt} disabled={isQuerying} />

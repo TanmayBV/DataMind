@@ -84,11 +84,12 @@ export const TableList: React.FC<TableListProps> = ({
             onClick={onRefreshSchema}
             disabled={isRefreshing}
             isLoading={isRefreshing}
-            className="h-8 min-h-[32px] px-2.5 text-xs gap-1"
+            className="h-8 min-h-[32px] px-2 sm:px-2.5 text-xs gap-1"
             title="Refresh schema reflection"
           >
             <RotateCw className="w-3.5 h-3.5" />
-            <span>Refresh Schema</span>
+            <span className="hidden sm:inline">Refresh Schema</span>
+            <span className="sm:hidden">Refresh</span>
           </Button>
         </div>
 

@@ -1,25 +1,39 @@
 import React from 'react';
-import { Database, Sun, Moon, BookOpen, Activity } from 'lucide-react';
+import { Database, Sun, Moon, BookOpen, Activity, Menu } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useStore } from '../../context/StoreContext';
 import { Badge, Button } from '../ui/Primitives';
 
-export const Topbar: React.FC = () => {
+interface TopbarProps {
+  onOpenMobileSidebar?: () => void;
+}
+
+export const Topbar: React.FC<TopbarProps> = ({ onOpenMobileSidebar }) => {
   const { theme, toggleTheme } = useTheme();
   const { connection, apiLatencyMs, backendConnected } = useStore();
 
   return (
-    <header className="sticky top-0 z-10 h-14 w-full bg-sidebar border-b border-border-subtle px-space-4 flex items-center justify-between transition-colors select-none">
-      {/* Left: Brand Identity */}
+    <header className="sticky top-0 z-30 h-14 w-full bg-sidebar border-b border-border-subtle px-space-4 flex items-center justify-between transition-colors select-none">
+      {/* Left: Mobile Menu & Brand Identity */}
       <div className="flex items-center gap-space-2">
-        <div className="w-8 h-8 rounded-lg bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary">
+        <button
+          type="button"
+          onClick={onOpenMobileSidebar}
+          className="md:hidden p-1.5 -ml-1 text-secondary hover:text-primary hover:bg-card rounded-lg transition-colors cursor-pointer"
+          aria-label="Open database and governance navigation"
+          title="Open menu"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+
+        <div className="w-8 h-8 rounded-lg bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary shrink-0">
           <Database className="w-5 h-5 text-accent-primary" />
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-semibold tracking-tight text-primary">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <span className="text-base sm:text-lg font-semibold tracking-tight text-primary">
             DataMind
           </span>
-          <Badge variant="neutral" className="text-xs">
+          <Badge variant="neutral" className="text-[10px] sm:text-xs">
             v2.4
           </Badge>
         </div>

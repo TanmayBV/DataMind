@@ -70,9 +70,9 @@ export const QueryInput: React.FC<QueryInputProps> = ({
   };
 
   return (
-    <div className="w-full bg-card border-t border-border-subtle p-space-4 transition-colors">
-      <div className="max-w-5xl mx-auto flex flex-col gap-space-2">
-        <div className="relative flex items-end gap-space-2 bg-input border border-border-subtle rounded-xl p-space-2 focus-within:border-accent-primary focus-within:ring-2 focus-within:ring-accent-primary/20 transition-all">
+    <div className="w-full bg-card border-t border-border-subtle p-space-2 sm:p-space-4 transition-colors">
+      <div className="max-w-5xl mx-auto flex flex-col gap-space-1 sm:gap-space-2">
+        <div className="relative flex items-end gap-space-1 sm:gap-space-2 bg-input border border-border-subtle rounded-xl p-space-1.5 sm:p-space-2 focus-within:border-accent-primary focus-within:ring-2 focus-within:ring-accent-primary/20 transition-all">
           <textarea
             ref={textareaRef}
             rows={1}
@@ -80,11 +80,11 @@ export const QueryInput: React.FC<QueryInputProps> = ({
             onChange={handleTextChange}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
-            placeholder="Ask a question about your database in any language (English, Spanish, Hindi, French, German)..."
+            placeholder="Ask a question about your database in any language..."
             className="flex-1 bg-transparent border-0 text-sm font-normal text-primary placeholder:text-muted resize-none focus:outline-none p-space-2 leading-relaxed min-h-[44px] max-h-[120px]"
           />
 
-          <div className="flex items-center gap-space-2 pb-1 pr-1 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-space-2 pb-1 pr-1 shrink-0">
             {hasHistory && (
               <Button
                 variant="ghost"
@@ -92,7 +92,7 @@ export const QueryInput: React.FC<QueryInputProps> = ({
                 onClick={() => setClearDialogOpen(true)}
                 disabled={isLoading}
                 title="Clear query history"
-                className="w-10 h-10 min-h-[40px] min-w-[40px] text-secondary hover:text-destructive hover:bg-status-error-bg/30 rounded-lg"
+                className="w-9 h-9 sm:w-10 sm:h-10 min-h-[36px] min-w-[36px] text-secondary hover:text-destructive hover:bg-status-error-bg/30 rounded-lg"
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
@@ -103,19 +103,21 @@ export const QueryInput: React.FC<QueryInputProps> = ({
               onClick={handleSubmit}
               disabled={isLoading || !queryText.trim()}
               isLoading={isLoading}
-              className="h-10 min-h-[40px] px-space-4 gap-1.5 text-xs font-semibold rounded-lg shadow-sm"
+              className="h-9 sm:h-10 min-h-[36px] px-2.5 sm:px-space-4 gap-1 sm:gap-1.5 text-xs font-semibold rounded-lg shadow-sm"
             >
-              <span>Execute Query</span>
+              <span className="hidden sm:inline">Execute Query</span>
               <CornerDownLeft className="w-3.5 h-3.5" />
             </Button>
           </div>
         </div>
 
         <div className="flex items-center justify-between text-[11px] text-muted px-1">
-          <span>
+          <span className="hidden sm:inline">
             Press <kbd className="px-1.5 py-0.5 rounded bg-canvas border border-border-subtle font-mono text-[10px]">Enter</kbd> to submit, <kbd className="px-1.5 py-0.5 rounded bg-canvas border border-border-subtle font-mono text-[10px]">Shift+Enter</kbd> for new line
           </span>
-          <span>5-Stage AST Governance Pipeline Active</span>
+          <span className="text-[10px] sm:text-[11px] text-center sm:text-right w-full sm:w-auto">
+            5-Stage AST Governance Pipeline Active
+          </span>
         </div>
       </div>
 

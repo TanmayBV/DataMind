@@ -54,7 +54,7 @@ export const SqlCard: React.FC<SqlCardProps> = ({
   return (
     <div className="w-full rounded-xl bg-canvas border border-border-subtle overflow-hidden my-space-3">
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between px-space-4 py-2 bg-card border-b border-border-subtle text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-space-3 sm:px-space-4 py-2 bg-card border-b border-border-subtle text-xs">
         <div className="flex items-center gap-space-2">
           <Terminal className="w-3.5 h-3.5 text-secondary" />
           <span className="font-semibold text-secondary uppercase tracking-wider text-xs">

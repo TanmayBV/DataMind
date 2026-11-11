@@ -18,6 +18,8 @@ import { TraceDrawer } from '../audit/TraceDrawer';
 export const AppShell: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'query' | 'schema' | 'audit'>('query');
   const [selectedTable, setSelectedTable] = useState<string | null>(null);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [mobileSchemaView, setMobileSchemaView] = useState<'tables' | 'graph'>('tables');
 
   const {
     connection,
@@ -61,22 +63,22 @@ export const AppShell: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-app text-primary flex flex-col transition-colors overflow-hidden">
-      {/* Sticky Topbar */}
-      <Topbar />
+      {/* Sticky Topbar with Mobile Menu Trigger */}
+      <Topbar onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)} />
 
       {/* Global Error Banner */}
       {errorMessage && (
-        <div className="bg-status-error-bg border-b border-status-error/30 px-space-4 py-2 flex items-center justify-between text-xs text-status-error shrink-0 z-30">
-          <div className="flex items-center gap-2">
+        <div className="bg-status-error-bg border-b border-status-error/30 px-space-3 sm:px-space-4 py-2 flex items-center justify-between text-xs text-status-error shrink-0 z-30">
+          <div className="flex items-center gap-2 truncate pr-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
-            <span className="font-semibold">Error:</span>
-            <span>{errorMessage}</span>
+            <span className="font-semibold shrink-0">Error:</span>
+            <span className="truncate">{errorMessage}</span>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={clearError}
-            className="text-status-error hover:bg-status-error/10 min-h-[32px] min-w-[32px] p-1"
+            className="text-status-error hover:bg-status-error/10 min-h-[32px] min-w-[32px] p-1 shrink-0"
           >
             <X className="w-3.5 h-3.5 mr-1" />
             Dismiss Alert
@@ -85,31 +87,37 @@ export const AppShell: React.FC = () => {
       )}
 
       {/* Body: Sidebar + Main Workspace */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Governance Sidebar */}
-        <GovernanceSidebar />
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Governance Sidebar (Responsive Drawer on Mobile) */}
+        <GovernanceSidebar
+          isOpenMobile={isMobileSidebarOpen}
+          onCloseMobile={() => setIsMobileSidebarOpen(false)}
+        />
 
         {/* Main Active Workspace View */}
-        <main className="flex-1 flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden">
+        <main className="flex-1 flex flex-col h-[calc(100vh-3.5rem)] w-full overflow-hidden">
           <Tabs
             value={activeTab}
-            onValueChange={(val) => setActiveTab(val as 'query' | 'schema' | 'audit')}
+            onValueChange={(val) => {
+              setActiveTab(val as 'query' | 'schema' | 'audit');
+              setIsMobileSidebarOpen(false);
+            }}
             className="h-full flex flex-col"
           >
             {/* View Navigation Tabs Header */}
-            <div className="px-space-6 pt-space-4 pb-space-3 border-b border-border-subtle bg-canvas/30 shrink-0">
-              <TabsList>
-                <TabsTrigger value="query">
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Query Console</span>
+            <div className="px-space-3 sm:px-space-6 pt-space-3 sm:pt-space-4 pb-space-2 sm:pb-space-3 border-b border-border-subtle bg-canvas/30 shrink-0 overflow-x-auto">
+              <TabsList className="w-full sm:w-auto flex justify-start">
+                <TabsTrigger value="query" className="flex-1 sm:flex-initial text-xs py-1.5 sm:py-2 px-2.5 sm:px-4">
+                  <MessageSquare className="w-4 h-4 shrink-0" />
+                  <span className="whitespace-nowrap">Query Console</span>
                 </TabsTrigger>
-                <TabsTrigger value="schema">
-                  <Network className="w-4 h-4" />
-                  <span>Schema Explorer</span>
+                <TabsTrigger value="schema" className="flex-1 sm:flex-initial text-xs py-1.5 sm:py-2 px-2.5 sm:px-4">
+                  <Network className="w-4 h-4 shrink-0" />
+                  <span className="whitespace-nowrap">Schema Explorer</span>
                 </TabsTrigger>
-                <TabsTrigger value="audit">
-                  <FileText className="w-4 h-4" />
-                  <span>Audit Telemetry</span>
+                <TabsTrigger value="audit" className="flex-1 sm:flex-initial text-xs py-1.5 sm:py-2 px-2.5 sm:px-4">
+                  <FileText className="w-4 h-4 shrink-0" />
+                  <span className="whitespace-nowrap">Audit Telemetry</span>
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -137,10 +145,40 @@ export const AppShell: React.FC = () => {
             </TabsContent>
 
             {/* Tab 2: Schema Explorer & ER Graph */}
-            <TabsContent value="schema" className="flex-1 overflow-hidden m-0 p-space-6">
-              <div className="h-full flex flex-col md:flex-row gap-space-6 overflow-hidden">
+            <TabsContent value="schema" className="flex-1 overflow-hidden m-0 p-space-3 sm:p-space-6 flex flex-col">
+              {/* Mobile View Switcher between Table List and ER Graph */}
+              <div className="md:hidden flex items-center p-1 bg-canvas rounded-lg border border-border-subtle mb-space-3 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setMobileSchemaView('tables')}
+                  className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+                    mobileSchemaView === 'tables'
+                      ? 'bg-card text-accent-primary shadow-xs'
+                      : 'text-secondary hover:text-primary'
+                  }`}
+                >
+                  Tables ({tablesMeta.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMobileSchemaView('graph')}
+                  className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+                    mobileSchemaView === 'graph'
+                      ? 'bg-card text-accent-primary shadow-xs'
+                      : 'text-secondary hover:text-primary'
+                  }`}
+                >
+                  ER Graph
+                </button>
+              </div>
+
+              <div className="flex-1 flex flex-col md:flex-row gap-space-4 md:gap-space-6 overflow-hidden">
                 {/* Left Subpanel: Discovered Tables Accordion */}
-                <div className="w-full md:w-[360px] lg:w-[400px] h-full shrink-0 flex flex-col">
+                <div
+                  className={`w-full md:w-[360px] lg:w-[400px] h-full shrink-0 flex flex-col ${
+                    mobileSchemaView === 'tables' ? 'flex' : 'hidden md:flex'
+                  }`}
+                >
                   <TableList
                     tables={tablesMeta}
                     selectedTable={selectedTable}
@@ -151,7 +189,11 @@ export const AppShell: React.FC = () => {
                 </div>
 
                 {/* Right Subpanel: React ER Diagram Canvas */}
-                <div className="flex-1 h-full min-w-0">
+                <div
+                  className={`flex-1 h-full min-w-0 ${
+                    mobileSchemaView === 'graph' ? 'flex' : 'hidden md:flex'
+                  }`}
+                >
                   <SchemaGraph
                     tables={tablesMeta}
                     selectedTable={selectedTable}
@@ -162,7 +204,7 @@ export const AppShell: React.FC = () => {
             </TabsContent>
 
             {/* Tab 3: Audit Telemetry */}
-            <TabsContent value="audit" className="flex-1 overflow-y-auto m-0 p-space-6">
+            <TabsContent value="audit" className="flex-1 overflow-y-auto m-0 p-space-3 sm:p-space-6">
               <div className="max-w-6xl mx-auto space-y-space-6 pb-space-8">
                 {/* KPI Metrics */}
                 <TelemetryKpis logs={auditLogs} totalLogs={auditTotal} />
