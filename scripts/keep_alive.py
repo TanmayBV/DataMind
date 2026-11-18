@@ -33,10 +33,18 @@ def ping_database(db_url: str = None) -> bool:
         raise ValueError("DATABASE_URL is not set.")
 
     with psycopg2.connect(target_url, connect_timeout=10) as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT 1;")
-            result = cur.fetchone()
-            return result[0] == 1
+    with conn.cursor() as cur:
+        cur.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.tables
+            WHERE table_schema = 'public'
+              AND table_type = 'BASE TABLE';
+        """)
+
+        result = cur.fetchone()
+        print(f"Supabase database active. Tables found: {result[0]}")
+
+        return True
 
 
 if __name__ == "__main__":
